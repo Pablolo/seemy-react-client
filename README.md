@@ -34,7 +34,7 @@ We will use __React__ for the frontend.
 | Path                  | Description               | Type of User              |
 | --------------------- | ------------------------- | ------------------------- |
 | `/cars/:id/book`      | book a car                | Renter                    |
-
+| `/driver/:id`         | see driver profile        | Both                      |
 
 ## Links
 

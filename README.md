@@ -1,17 +1,18 @@
-# seemy-react-client
+# Seemy - React Client
 
-Seemy is a platform that puts in contact people who has sports & luxury cars with those who want to rent them for a few days. Think about it as a 'Getaround' app but only focused on high-end cars.
+## Description
+
+Seemy is a platform that puts in contact people who has sports & luxury cars with those who want to rent them for a few days. Think about it as a 'Getaround' app, but only focused on high-end cars.
 
 There will be two types of users: owners and renters. Both will have to register. 
 
-* Owners will be able to add their cars on the platform, edit and delete them.
-* Renters will be able to browse through all cars, search by name and book them on their desired date.
+* __Owners__ will be able to add their cars on the platform, edit and delete them.
+* __Renters__ will be able to browse through all cars, search by name and book them on their desired date.
 
 * * *
 ## MVP
 ### Technique
 We will use __React__ for the frontend. 
-
 
 
 ## Views
@@ -36,7 +37,22 @@ We will use __React__ for the frontend.
 
 
 ## Links
+
+### Trello
+
 [Seemy Trello](https://trello.com/b/gNnluUYp/ironhack-module3-project)
 
-[Github - Client React](https://github.com/Pablolo/seemy-react-client)
-[Github - Server API](https://github.com/Pablolo/seemy-node-server)
+### Git
+
+The url to your repository and to your deployed project
+
+[Github Repo - React Client](https://github.com/Pablolo/seemy-react-client)
+
+[Github Repo - Server API](https://github.com/Pablolo/seemy-express-server)
+
+
+[Deploy Link](http://heroku.com/)
+
+### Slides
+
+[Slides Link](http://slides.com/)

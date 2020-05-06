@@ -43,7 +43,11 @@ List of other features outside of the MVPs scope
 
 User profile: - see and edit my profile - upload my profile picture.
 
-Book a car: - all the steps to actually book it
+Book a car: - all the steps to actually book it.
+
+Reviews: - add reviews when you used a car.
+
+Famous: - what famous people have this same car that you're going to book.
 
 * * *
 ## MVP
@@ -61,6 +65,7 @@ We will use __React__ for the frontend.
 | `/cars/add`           | add a new car             | Owner                     |
 | `/cars/:id`           | get a specific car        | Both                      |
 | `/cars/:id/update`    | update a car              | Owner                     |
+| `/driver/:id`         | see driver profile        | Both                      |
 | `/learn-more`         | info on how to use it     | Both                      |
 | `/signup`             | signup page               | Both                      |
 | `/login`              | login page                | Both                      |
@@ -70,22 +75,20 @@ We will use __React__ for the frontend.
 | Path                  | Description               | Type of User              |
 | --------------------- | ------------------------- | ------------------------- |
 | `/cars/:id/book`      | book a car                | Renter                    |
-| `/driver/:id`         | see driver profile        | Both                      |
 
 ## Links
 
 ### Trello
 
-[Seemy Trello](https://trello.com/b/gNnluUYp/ironhack-module3-project)
+[Seemy Trello](https://trello.com/b/gNnluUYp/seemy-ironhack)
 
 ### Git
-
-The url to your repository and to your deployed project
 
 [Github Repo - React Client](https://github.com/Pablolo/seemy-react-client)
 
 [Github Repo - Server API](https://github.com/Pablolo/seemy-express-server)
 
+### Deploy
 
 [Deploy Link](http://heroku.com/)
 

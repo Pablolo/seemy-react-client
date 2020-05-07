@@ -1,25 +1,105 @@
-import axios from 'axios';
+import React, { Component } from 'react';
 
-class ApiClient {
-  constructor() {
-    this.apiClient = axios.create({
-      baseURL: process.env.REACT_BACKEND_URI,
-      withCredentials: true,
-    });
-  }
+import apiClient from '../services/apiClient';
 
-  login(body) {
-    return this.apiClient.post('/login', body);
-  }
+export const AuthContext = React.createContext();
 
-  logout() {
-    return this.apiClient.get('/logout');
-  }
+export const withAuth = (Comp) => {
+  return class WithAuth extends Component {
+    render() {
+      return (
+        <AuthContext.Consumer>
+          {({ handleLogin, user, isLoggedIn, handleLogout }) => {
+            return (
+              <Comp 
+                onLogin={handleLogin}
+                user={user}
+                isLoggedIn={isLoggedIn}
+                onLogout={handleLogout}
+                {...this.props}
+              />
+            )
+          }}
+        </AuthContext.Consumer>
+      );
+    }
+  };
+};
 
-  whoami() {
-    return this.apiClient.get('/whoami');
+class AuthProvider extends Component {
+  state = {
+    isLoggedIn: false,
+    user: null,
+    isLoading: true,
+  };
+
+  componentDidMount() {
+    apiClient
+    .whoami()
+    .then((user) => {
+      this.setState({
+        isLoading: false,
+        isLoggedIn: true,
+        user,
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        isLoading: false,
+          isLoggedIn: false,
+          user: null,
+      });
+    })
+  } 
+
+
+  handleLogin = ({ email, password }) => {
+    apiClient
+      .login({ email, password })
+      .then(({ data: user }) => {
+        this.setState({
+          isLoggedIn: true,
+          user,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          isLoggedIn: false,
+          user: null,
+        });
+      });
+  };
+
+  handleLogout = () => {
+    apiClient
+      .logout()
+      .then(() => {
+        this.setState({
+          isLoggedIn: false,
+          user: null,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  render() {
+    const { children } = this.props;
+    const { isLoggedIn, user } = this.state;
+    return (
+      <AuthContext.Provider
+        value={{
+          isLoggedIn,
+          user,
+          handleLogin: this.handleLogin,
+          handleLogout: this.handleLogout,
+        }}
+      >
+        {children}
+      </AuthContext.Provider>
+    );
   }
 }
 
-const apiClient = new ApiClient();
-export default apiClient;
+export default AuthProvider;

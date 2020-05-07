@@ -3,24 +3,28 @@ import { withAuth } from "../context/authContext";
 
 class Signup extends Component {
   state = { 
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
-    const { onLogin } = this.props;
-    if (email !== '' && password !== '') {
-      onLogin({ email, password });
+    const { firstName, lastName, email, password } = this.state;
+    console.log('propsss', this.props)
+    const { onSignup } = this.props;
+    if ( firstName !== '' && lastName !== '' && email !== '' && password !== '') {
+      onSignup({ firstName, lastName, email, password });
     }
   };
 
-
   cleanForm = () => {
     this.setState({
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
     });
   };
 
@@ -31,12 +35,30 @@ class Signup extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { firstName, lastName, email, password } = this.state;
 
     return (
       <div>
         <h1>Signup</h1>
         <form onSubmit={this.handleSubmit}>
+        <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="firstName"
+            value={firstName}
+            onChange={this.handleChange}
+          />
+          <br></br>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="lastName"
+            value={lastName}
+            onChange={this.handleChange}
+          />
+          <br></br>
           <input
             type="text"
             name="email"
@@ -45,6 +67,7 @@ class Signup extends Component {
             value={email}
             onChange={this.handleChange}
           />
+          <br></br>
           <input
             type="password"
             name="password"

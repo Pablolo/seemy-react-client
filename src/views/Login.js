@@ -16,7 +16,6 @@ class Login extends Component {
     }
   };
 
-
   cleanForm = () => {
     this.setState({
       email: "",

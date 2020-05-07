@@ -3,9 +3,14 @@ import axios from 'axios';
 class ApiClient {
   constructor() {
     this.apiClient = axios.create({
-      baseURL: process.env.REACT_BACKEND_URI,
+      baseURL: process.env.REACT_APP_BACKEND_URI,
       withCredentials: true,
     });
+  }
+
+  signup(body) {
+    console.log('llega a signup')
+    return this.apiClient.post('/signup', body);
   }
 
   login(body) {
@@ -18,6 +23,14 @@ class ApiClient {
 
   whoami() {
     return this.apiClient.get('/whoami');
+  }
+
+  getProtected() {
+    return this.apiClient.get("/protected");
+  }
+
+  test() {
+    return this.apiClient.get('/test');
   }
 }
 

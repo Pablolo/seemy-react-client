@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Switch, Link } from 'react-router-dom';
 
 import AnonRoute from "./components/AnonRoute";
-// import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
+import Protected from "./views/Protected";
 import LoginWithAuth from './views/Login';
 import SignupWithAuth from './views/Signup';
 
@@ -22,7 +23,7 @@ class App extends Component {
           <Switch>
             <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
             <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
-            {/* <PrivateRoute exact path={'/whatever'} component={whatever}/> */}
+            <PrivateRoute exact path={"/protected"} component={Protected} />
           </Switch>
         </div>
       </AuthProvider>

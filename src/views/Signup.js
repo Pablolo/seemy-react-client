@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
+import { Link } from 'react-router-dom';
 
 class Signup extends Component {
   state = { 
@@ -39,45 +40,55 @@ class Signup extends Component {
 
     return (
       <div>
-        <h1>Signup</h1>
+        <h1>Let's get Started</h1>
         <form onSubmit={this.handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
+        <br></br>
         <input
             type="text"
             name="firstName"
             id="firstName"
-            placeholder="firstName"
+            placeholder="First Name"
             value={firstName}
             onChange={this.handleChange}
           />
+          <br></br>
+          <label htmlFor="lastName">Last Name</label>
           <br></br>
           <input
             type="text"
             name="lastName"
             id="lastName"
-            placeholder="lastName"
+            placeholder="Last Name"
             value={lastName}
             onChange={this.handleChange}
           />
+          <br></br>
+          <label htmlFor="email">Your Email</label>
           <br></br>
           <input
             type="text"
             name="email"
             id="email"
-            placeholder="email"
+            placeholder="Email"
             value={email}
             onChange={this.handleChange}
           />
+          <br></br>
+          <label htmlFor="password">Password</label>
           <br></br>
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="password"
+            placeholder="Password"
             value={password}
             onChange={this.handleChange}
           />
-          <input type="submit" value="submit" />
+          <br></br>
+          <input type="submit" value="Sign Up" />
         </form>
+        <p>Already have an account?</p><Link to={'/login'}><button>Log In</button></Link> 
       </div>      
     );
   }

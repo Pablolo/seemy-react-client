@@ -90,7 +90,9 @@ We will use __React__ for the frontend.
 
 ### Deploy
 
-[Deploy Link](http://heroku.com/)
+[Heroku Backend](https://seemy.herokuapp.com/)
+
+[See the App Live on Netlify](https://seemy.netlify.app/)
 
 ### Slides
 

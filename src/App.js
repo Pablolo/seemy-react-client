@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Link } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -19,9 +19,6 @@ class App extends Component {
       <AuthProvider>
         <div>
           <NavBar />
-          {/* <Link to={'/'}>Home</Link>
-          <Link to={'/login'}>Login</Link>
-          <Link to={'/signup'}>Signup</Link> */}
           <Switch>
             <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
             <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>

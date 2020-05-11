@@ -92,7 +92,7 @@ We will use __React__ for the frontend.
 
 [Heroku Backend](https://seemy.herokuapp.com/)
 
-[See the App Live on Netlify](https://seemy.netlify.app/)
+[See the App Live on Netlify!](https://seemy.netlify.app/)
 
 ### Slides
 

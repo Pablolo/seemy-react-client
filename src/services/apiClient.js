@@ -9,7 +9,6 @@ class ApiClient {
   }
 
   signup(body) {
-    console.log('llega a signup')
     return this.apiClient.post('/signup', body);
   }
 
@@ -29,8 +28,12 @@ class ApiClient {
     return this.apiClient.get("/protected");
   }
 
-  test() {
-    return this.apiClient.get('/test');
+  cars() {
+    return this.apiClient.get('/cars');
+  }
+  
+  uniqueCar(id) {
+    return this.apiClient.get(`/cars/${id}`);
   }
 }
 

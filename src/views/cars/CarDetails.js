@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import BookingForm from '../components/BookingForm';
+import BookingForm from '../../components/BookingForm';
 
-import apiClient from '../services/apiClient';
+import apiClient from '../../services/apiClient';
 
 const STATUS = {
   LOADING: "LOADING",

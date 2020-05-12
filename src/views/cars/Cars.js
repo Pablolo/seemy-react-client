@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import Search from '../components/SearchBar';
+import Search from '../../components/SearchBar';
 
-import apiClient from '../services/apiClient';
+import apiClient from '../../services/apiClient';
 
 const STATUS = {
   LOADING: "LOADING",

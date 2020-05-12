@@ -9,9 +9,9 @@ import HomePage from './views/Homepage';
 import Protected from './views/auth/Protected';
 import LoginWithAuth from './views/auth/Login';
 import SignupWithAuth from './views/auth/Signup';
-import Cars from './views/Cars';
-import CarDetails from './views/CarDetails';
-import ListYourCar from './views/ListYourCar';
+import Cars from './views/cars/Cars';
+import CarDetails from './views/cars/CarDetails';
+import ListYourCar from './views/cars/ListYourCar';
 import LearnMore from './views/LearnMore';
 
 import AuthProvider from './context/authContext';

@@ -11,6 +11,7 @@ import Protected from "./views/Protected";
 import LoginWithAuth from './views/Login';
 import SignupWithAuth from './views/Signup';
 import Cars from './views/Cars';
+import CarDetails from './views/CarDetails';
 
 import AuthProvider from './context/authContext';
 
@@ -32,7 +33,6 @@ class App extends Component {
   componentDidMount = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URI}/cars`)
     .then((response) => {
-      // console.log(response.data);
       this.setState({
         cars: response.data,
         status: STATUS.LOADED,
@@ -57,7 +57,8 @@ class App extends Component {
                   <NavBar />
                   <Switch>
                     <Route exact path='/' component={HomePage}/>
-                    <Route exact path={'/cars'} render={() => <Cars cars={cars}/>}/>
+                    <Route exact path={'/cars'} render={(props) => <Cars {...props} cars={cars}/>}/>
+                    <Route exact path={'/cars/:id'} render={(props) => <CarDetails {...props} cars={cars}/>}/>
                     <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
                     <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
                     <PrivateRoute exact path={"/protected"} component={Protected} />

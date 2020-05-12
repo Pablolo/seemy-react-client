@@ -12,6 +12,8 @@ import LoginWithAuth from './views/Login';
 import SignupWithAuth from './views/Signup';
 import Cars from './views/Cars';
 import CarDetails from './views/CarDetails';
+import ListYourCar from './views/ListYourCar';
+import LearnMore from './views/LearnMore';
 
 import AuthProvider from './context/authContext';
 
@@ -59,9 +61,11 @@ class App extends Component {
                     <Route exact path='/' component={HomePage}/>
                     <Route exact path={'/cars'} render={(props) => <Cars {...props} cars={cars}/>}/>
                     <Route exact path={'/cars/:id'} render={(props) => <CarDetails {...props} cars={cars}/>}/>
+                    <Route exact path={'/learn-more'} component={LearnMore}/>
+                    <PrivateRoute exact path={'/cars/add'} component={ListYourCar} />
                     <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
                     <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
-                    <PrivateRoute exact path={"/protected"} component={Protected} />
+                    <PrivateRoute exact path={'/protected'} component={Protected} />
                   </Switch>
                 </div>
               </AuthProvider>

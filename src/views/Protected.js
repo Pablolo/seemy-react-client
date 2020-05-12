@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { withAuth } from "../context/authContext";
 
-class Resorts extends Component {
+class Protected extends Component {
   render() {
     const { onLogout } = this.props;
     return (
@@ -14,4 +14,4 @@ class Resorts extends Component {
   }
 }
 
-export default withAuth(Resorts);
+export default withAuth(Protected);

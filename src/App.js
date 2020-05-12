@@ -60,9 +60,9 @@ class App extends Component {
                   <Switch>
                     <Route exact path='/' component={HomePage}/>
                     <Route exact path={'/cars'} render={(props) => <Cars {...props} cars={cars}/>}/>
+                    <PrivateRoute exact path={'/cars/add'} component={ListYourCar} />
                     <Route exact path={'/cars/:id'} render={(props) => <CarDetails {...props} cars={cars}/>}/>
                     <Route exact path={'/learn-more'} component={LearnMore}/>
-                    <PrivateRoute exact path={'/cars/add'} component={ListYourCar} />
                     <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
                     <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
                     <PrivateRoute exact path={'/protected'} component={Protected} />

@@ -6,9 +6,9 @@ import PrivateRoute from './components/PrivateRoute';
 import NavBar from './components/Navbar';
 
 import HomePage from './views/Homepage';
-import Protected from "./views/Protected";
-import LoginWithAuth from './views/Login';
-import SignupWithAuth from './views/Signup';
+import Protected from './views/auth/Protected';
+import LoginWithAuth from './views/auth/Login';
+import SignupWithAuth from './views/auth/Signup';
 import Cars from './views/Cars';
 import CarDetails from './views/CarDetails';
 import ListYourCar from './views/ListYourCar';
@@ -32,7 +32,7 @@ class App extends Component {
             <Route exact path={'/learn-more'} component={LearnMore}/>
             <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
             <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
-            <PrivateRoute exact path={'/protected'} component={Protected} />
+            <PrivateRoute exact path={"/protected"} component={Protected} />
           </Switch>
         </div>
       </AuthProvider>

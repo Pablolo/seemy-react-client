@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withAuth } from "../context/authContext";
+import { withAuth } from "../../context/authContext";
 import { Link } from 'react-router-dom';
 
 class Signup extends Component {

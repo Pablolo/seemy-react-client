@@ -32,7 +32,7 @@ class App extends Component {
   componentDidMount = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URI}/cars`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({
         cars: response.data,
         status: STATUS.LOADED,
@@ -57,7 +57,7 @@ class App extends Component {
                   <NavBar />
                   <Switch>
                     <Route exact path='/' component={HomePage}/>
-                    <Route exact path={'/cars'} component={Cars} />
+                    <Route exact path={'/cars'} render={() => <Cars cars={cars}/>}/>
                     <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
                     <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
                     <PrivateRoute exact path={"/protected"} component={Protected} />

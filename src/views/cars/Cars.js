@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import Search from '../../components/SearchBar';
+import LeanCarDetail from '../../components/LeanCarDetail';
 
 import apiClient from '../../services/apiClient';
 
@@ -38,13 +38,7 @@ class Cars extends Component {
   listCars = () => {
     const { cars } = this.state;
     return cars.map((car, index) => {
-      return <Link key={index} to={`/cars/${car._id}`}> 
-                <div>
-                  <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.carSpecs.make + car.carSpecs.model}/>
-                  <p>{car.carSpecs.make} {car.carSpecs.model} {car.carSpecs.year}</p>
-                  <p>{car.dailyPrice}€/day</p>
-                </div>
-              </Link>
+      return <LeanCarDetail car={car} index={index}/>
     })
   }
 

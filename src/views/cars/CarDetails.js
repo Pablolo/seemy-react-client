@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BookingForm from '../../components/BookingForm';
+import CarDetail from '../../components/CarDetail';
 
 import apiClient from '../../services/apiClient';
 
@@ -33,38 +33,16 @@ class CarDetails extends Component {
       })
     })
   }
-  
-  cardetail = () => {
-    const { car } = this.state;
-    return  <div>
-              <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.carSpecs.make + car.carSpecs.model}/>
-              <p>{car.carSpecs.make} {car.carSpecs.model}</p>
-              <div>
-                <p>Year {car.carSpecs.year}</p>
-                <p>{car.transmission} Transmission</p>
-              </div>
-              <div>
-                <p>{car.dailyPrice}€/day</p>
-                <BookingForm />
-              </div>
-              <p>Hosted by</p>
-              <div>
-                <img src={process.env.REACT_APP_BACKEND_URI + '/images/misc/default-avatar.png'} alt=""/>
-                <p>{car.owner}</p>
-              </div>
-              <p>{car.description}</p>
-            </div>
-  }
-  
+ 
   render() {
-    const { status, error } = this.state;
+    const { status, error, car } = this.state;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
       case STATUS.LOADED:
         return <div>
                 <h1>Each Car Detail</h1>
-                {this.cardetail()}
+                <CarDetail car={car}/>
                </div>
       case STATUS.ERROR:
         return <div>{error}</div>

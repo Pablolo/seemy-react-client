@@ -40,11 +40,12 @@ class Homepage extends Component {
   listCars = () => {
     const { cars } = this.state;
     return cars.map((car, index) => {
-      return <LeanCarDetail car={car} index={index}/>
+      return <LeanCarDetail key={index} car={car} />
     })
   }
 
   render() {
+    console.log('homepage props', this.props)
     const { status, error } = this.state;
     switch (status) {
       case STATUS.LOADING:

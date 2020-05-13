@@ -38,7 +38,7 @@ class Cars extends Component {
   listCars = () => {
     const { cars } = this.state;
     return cars.map((car, index) => {
-      return <LeanCarDetail car={car} index={index}/>
+      return <LeanCarDetail key={index} car={car}/>
     })
   }
 

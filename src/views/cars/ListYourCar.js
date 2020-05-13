@@ -40,7 +40,7 @@ class ListYourCar extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    const ownerId = this.props.user.data._id;
+    const userId = this.props.user.data._id;
     const { streetAdress, 
             city, 
             province, 
@@ -78,7 +78,7 @@ class ListYourCar extends Component {
           owner
        })
       .then((res) => {
-        history.push(`/driver/${ownerId}`);
+        history.push(`/driver/${userId}`);
       })
       .catch((error) => {
         console.log(error);

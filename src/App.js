@@ -13,6 +13,7 @@ import Cars from './views/cars/Cars';
 import CarDetails from './views/cars/CarDetails';
 import ListYourCar from './views/cars/ListYourCar';
 import LearnMore from './views/LearnMore';
+import DriverProfile from './views/DriverProfile';
 
 import AuthProvider from './context/authContext';
 
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path={'/learn-more'} component={LearnMore}/>
             <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
             <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>
+            <PrivateRoute exact path={'/driver/:id'} component={DriverProfile} />
             <PrivateRoute exact path={"/protected"} component={Protected} />
           </Switch>
         </div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { withAuth } from "../../context/authContext";
 
+import apiClient from '../../services/apiClient';
+
 class ListYourCar extends Component {
   state = {
     streetAdress: '',
@@ -22,25 +24,66 @@ class ListYourCar extends Component {
     owner: '',
   };
 
+  componentDidMount = () => {
+    const ownerId = this.props.user.data._id;
+    this.setState({
+      owner: ownerId,
+    });
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { history } = this.props;
-  //   const { name, longitude, latitude } = this.state;
-  //   apiClient
-  //     .createResort({ name, latitude, longitude })
-  //     .then((res) => {
-  //       history.push("/resorts");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { history } = this.props;
+    const ownerId = this.props.user.data._id;
+    const { streetAdress, 
+            city, 
+            province, 
+            postalCode, 
+            year, 
+            make, 
+            model, 
+            odometer, 
+            advanceNoticeHours, 
+            maxDurationDays, 
+            transmission,
+            image,
+            description,
+            licensePlate,
+            dailyPrice,
+            owner
+            } = this.state;
+    apiClient
+      .addCar({ 
+          streetAdress, 
+          city, 
+          province, 
+          postalCode, 
+          year, 
+          make, 
+          model, 
+          odometer, 
+          advanceNoticeHours, 
+          maxDurationDays, 
+          transmission,
+          image,
+          description,
+          licensePlate,
+          dailyPrice,
+          owner
+       })
+      .then((res) => {
+        history.push(`/driver/${ownerId}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     return (
@@ -175,7 +218,6 @@ class ListYourCar extends Component {
           <h2>Description</h2>
           <label htmlFor="description">Describe your Vehicle</label>
           <textarea
-            // type="textarea"
             name="description"
             id="description"
             placeholder="Write here..."

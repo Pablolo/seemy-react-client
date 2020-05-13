@@ -35,6 +35,10 @@ class ApiClient {
   uniqueCar(id) {
     return this.apiClient.get(`/cars/${id}`);
   }
+
+  addCar(body) {
+    return this.apiClient.post('/cars', body)
+  }
 }
 
 const apiClient = new ApiClient();

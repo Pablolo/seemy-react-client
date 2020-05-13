@@ -121,10 +121,22 @@ class ListYourCar extends Component {
             placeholder="License Plate"
             onChange={this.handleChange}
           /> (this will not be public)
-          <input type="radio" id="manual" name="transmission" value="manual" />
-            <label htmlFor="manual">Manual</label>
-            <input type="radio" id="automatic" name="transmission" value="automatic" />
-            <label htmlFor="automatic">Automatic</label>
+          <input 
+            type="radio" 
+            id="manual" 
+            name="transmission" 
+            value="manual" 
+            onChange={this.handleChange}
+          />
+          <label htmlFor="manual">Manual</label>
+          <input 
+            type="radio" 
+            id="automatic" 
+            name="transmission" 
+            value="automatic" 
+            onChange={this.handleChange}             
+          />
+          <label htmlFor="automatic">Automatic</label>
           <h2>Car Photos</h2>
           <label htmlFor="image">Photo</label>
           <input

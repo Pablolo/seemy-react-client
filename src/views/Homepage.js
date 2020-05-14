@@ -56,6 +56,7 @@ class Homepage extends Component {
               </div>
       case STATUS.ERROR:
         return <div>{error}</div>
+      // no default
     };
   }
 }

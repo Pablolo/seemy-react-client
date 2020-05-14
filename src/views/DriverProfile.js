@@ -4,7 +4,7 @@ import { withAuth } from "../context/authContext";
 
 class DriverProfile extends Component {
   render() {
-    console.log('driver page props', this.props)
+    // console.log('driver page props', this.props)
     const { onLogout } = this.props;
     return (
       <div>

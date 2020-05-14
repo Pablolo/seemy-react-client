@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Search from '../components/SearchBar';
 import LeanCarDetail from '../components/LeanCarDetail';
 
 import apiClient from '../services/apiClient';

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { withAuth } from "../context/authContext";
 
 class Navbar extends Component {
-
   render() {
     // const userId = this.props.user.data._id;
     console.log('navbar props', this.props)

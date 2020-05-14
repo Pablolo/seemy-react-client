@@ -44,24 +44,13 @@ class Cars extends Component {
 
   searchFilterRendering = () => {
     const { cars, searchQuery } = this.state;
-    // const includes = (car) => car.carSpecs.make.toLowerCase().includes(searchQuery.toLowerCase());
-
-    // const includes = (car) => {
-    //   return (car.carSpecs.make.toLowerCase() || car.specs.model.toLowerCase()).includes(searchQuery.toLowerCase());
-    // };
-
-    const makeIncludes = (car) => car.carSpecs.make.toLowerCase().includes(searchQuery.toLowerCase());
-    const modelIncludes = (car) => car.carSpecs.model.toLowerCase().includes(searchQuery.toLowerCase());
-  
     if (searchQuery === '') {
       return cars.map((car, index) => {
         return <LeanCarDetail key={index} car={car}/>
       })
     } else if (searchQuery !== '') {
       return cars.map((car, index) => {
-        if (makeIncludes(car)) {
-          return <LeanCarDetail key={index} car={car}/>
-        } else if (modelIncludes(car)) {
+        if (car.carSpecs.make.toLowerCase().includes(searchQuery.toLowerCase()) || car.carSpecs.model.toLowerCase().includes(searchQuery.toLowerCase())) {
           return <LeanCarDetail key={index} car={car}/>
         }
       })

@@ -47,8 +47,8 @@ class AuthProvider extends Component {
     .catch((error) => {
       this.setState({
         isLoading: false,
-          isLoggedIn: false,
-          user: null,
+        isLoggedIn: false,
+        user: null,
       });
     })
   } 
@@ -97,7 +97,7 @@ class AuthProvider extends Component {
 
   render() {
     const { children } = this.props;
-    const { isLoggedIn, user } = this.state;
+    const { isLoggedIn, user, isLoading } = this.state;
     return (
       <AuthContext.Provider
         value={{
@@ -108,7 +108,8 @@ class AuthProvider extends Component {
           handleLogout: this.handleLogout,
         }}
       >
-        {children}
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && children} 
       </AuthContext.Provider>
     );
   }

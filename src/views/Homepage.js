@@ -45,14 +45,13 @@ class Homepage extends Component {
   }
 
   render() {
-    console.log('homepage props', this.props)
+    // console.log('homepage props', this.props)
     const { status, error } = this.state;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
       case STATUS.LOADED:
         return <div>
-                <Search />
                 <h1>Homepage</h1>
                 {this.listCars()}
               </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Search from '../../components/SearchBar';
+import SearchBar from '../../components/SearchBar';
 import LeanCarDetail from '../../components/LeanCarDetail';
 
 import apiClient from '../../services/apiClient';
@@ -16,6 +16,7 @@ class Cars extends Component {
     cars: [],
     error: undefined,
     status: STATUS.LOADING,
+    searchQuery: ''
   }
 
   componentDidMount = () => {
@@ -35,11 +36,27 @@ class Cars extends Component {
     })
   }
 
-  listCars = () => {
-    const { cars } = this.state;
-    return cars.map((car, index) => {
-      return <LeanCarDetail key={index} car={car}/>
+  search = (e) => {
+    this.setState({
+      searchQuery: e.target.value,
     })
+  }
+
+  searchFilterRendering = () => {
+    const { cars, searchQuery } = this.state;
+    const includes = (car) => car.carSpecs.make.toLowerCase().includes(searchQuery.toLowerCase());
+  
+    if (searchQuery === '') {
+      return cars.map((car, index) => {
+        return <LeanCarDetail key={index} car={car}/>
+      })
+    } else if (searchQuery !== '') {
+      return cars.map((car, index) => {
+        if(includes(car)) {
+          return <LeanCarDetail key={index} car={car}/>
+        }
+      })
+    } 
   }
 
   render() {
@@ -49,9 +66,9 @@ class Cars extends Component {
         return <div>Loading...</div>
       case STATUS.LOADED:
         return <div>
-                <Search />
+                <SearchBar searchQuery={this.search} />
                 <h1>Cars Page</h1>
-                {this.listCars()}
+                {this.searchFilterRendering()}
               </div>
       case STATUS.ERROR:
         return <div>{error}</div>

@@ -31,10 +31,6 @@ class ListYourCar extends Component {
         owner: this.props.user._id
       })
     }
-    // const ownerId = this.props.user.data._id;
-    // this.setState({
-    //   owner: ownerId,
-    // });
   }
 
   handleChange = (e) => {

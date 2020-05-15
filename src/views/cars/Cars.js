@@ -44,13 +44,17 @@ class Cars extends Component {
 
   searchFilterRendering = () => {
     const { cars, searchQuery } = this.state;
+    let carsUpdated = cars.map((car, index) => {
+      car.fullName = `${car.carSpecs.make} ${car.carSpecs.model} ${car.carSpecs.year}`;
+      return car;
+    })
     if (searchQuery === '') {
       return cars.map((car, index) => {
         return <LeanCarDetail key={index} car={car}/>
       })
     } else if (searchQuery !== '') {
-      return cars.map((car, index) => {
-        if (car.carSpecs.make.toLowerCase().includes(searchQuery.toLowerCase()) || car.carSpecs.model.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return carsUpdated.map((car, index) => {
+        if (car.fullName.toLowerCase().includes(searchQuery.toLowerCase())) {
           return <LeanCarDetail key={index} car={car}/>
         }
       })

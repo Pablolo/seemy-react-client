@@ -44,7 +44,7 @@ class Cars extends Component {
 
   searchFilterRendering = () => {
     const { cars, searchQuery } = this.state;
-    let carsUpdated = cars.map((car, index) => {
+    let carsUpdated = cars.map((car) => {
       car.fullName = `${car.carSpecs.make} ${car.carSpecs.model} ${car.carSpecs.year}`;
       return car;
     })

@@ -159,7 +159,7 @@ class ListYourCar extends Component {
           />
            <label htmlFor="licensePlate">License Plate Number</label>
           <input
-            type="number"
+            type="text"
             name="licensePlate"
             id="licensePlate"
             placeholder="License Plate"

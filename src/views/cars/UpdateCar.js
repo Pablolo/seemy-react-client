@@ -59,6 +59,21 @@ class UpdateCar extends Component {
     this.setState({ car: currentState });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const carId = this.props.match.params.id;
+    const { car } = this.state;
+    const { history } = this.props;
+    apiClient
+      .updateCar(carId, car) 
+      .then((res) => {
+        history.push(`/cars/${carId}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // handleDelete = (id) => {
   //   apiClient
   //     .deleteCar(id)
@@ -73,6 +88,7 @@ class UpdateCar extends Component {
 
   render() {
     const { car, status, error, match } = this.state;
+    // console.log(car);
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
@@ -102,7 +118,7 @@ class UpdateCar extends Component {
                         type="number"
                         name="postalCode"
                         id="postalCode"
-                        placeholder="Postal Code"
+                        defaultValue={car.postalCode}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="city">City</label>
@@ -110,7 +126,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="city"
                         id="city"
-                        placeholder="City"
+                        defaultValue={car.city}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="province">Province</label>
@@ -118,7 +134,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="province"
                         id="province"
-                        placeholder="Province"
+                        defaultValue={car.province}
                         onChange={this.handleChange}
                       />
                       <h2>Car Details</h2>
@@ -127,7 +143,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="make"
                         id="make"
-                        placeholder="Make"
+                        defaultValue={car.make}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="model">Model</label>
@@ -135,7 +151,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="model"
                         id="model"
-                        placeholder="Model"
+                        defaultValue={car.model}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="year">Year</label>
@@ -143,7 +159,7 @@ class UpdateCar extends Component {
                         type="number"
                         name="year"
                         id="year"
-                        placeholder="Year"
+                        defaultValue={car.year}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="odometer">Odometer</label>
@@ -151,15 +167,15 @@ class UpdateCar extends Component {
                         type="number"
                         name="odometer"
                         id="odometer"
-                        placeholder="Odometer"
+                        defaultValue={car.odometer}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="licensePlate">License Plate Number</label>
                       <input
-                        type="number"
+                        type="text"
                         name="licensePlate"
                         id="licensePlate"
-                        placeholder="License Plate"
+                        defaultValue={car.licensePlate}
                         onChange={this.handleChange}
                       /> (this will not be public)
                       <input 
@@ -167,6 +183,7 @@ class UpdateCar extends Component {
                         id="manual" 
                         name="transmission" 
                         value="manual" 
+                        checked={car.transmission === "manual"}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="manual">Manual</label>
@@ -175,6 +192,7 @@ class UpdateCar extends Component {
                         id="automatic" 
                         name="transmission" 
                         value="automatic" 
+                        checked={car.transmission === "automatic"}
                         onChange={this.handleChange}             
                       />
                       <label htmlFor="automatic">Automatic</label>
@@ -184,7 +202,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="image"
                         id="image"
-                        placeholder="Image URL"
+                        defaultValue={car.image}
                         onChange={this.handleChange}
                       />
                       <h2>Car Availability</h2>
@@ -193,7 +211,7 @@ class UpdateCar extends Component {
                         type="number"
                         name="advanceNoticeHours"
                         id="advanceNoticeHours"
-                        placeholder="Hours"
+                        defaultValue={car.advanceNoticeHours}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="maxDurationDays">Max. Booking Duration (Days)</label>
@@ -201,7 +219,7 @@ class UpdateCar extends Component {
                         type="number"
                         name="maxDurationDays"
                         id="maxDurationDays"
-                        placeholder="Days"
+                        defaultValue={car.maxDurationDays}
                         onChange={this.handleChange}
                       />
                       <h2>Desired Price</h2>
@@ -210,7 +228,7 @@ class UpdateCar extends Component {
                         type="number"
                         name="dailyPrice"
                         id="dailyPrice"
-                        placeholder="Price"
+                        defaultValue={car.dailyPrice}
                         onChange={this.handleChange}
                       /> euros
                       <h2>Description</h2>
@@ -218,11 +236,11 @@ class UpdateCar extends Component {
                       <textarea
                         name="description"
                         id="description"
-                        placeholder="Write here..."
+                        defaultValue={car.description}
                         onChange={this.handleChange}
                       />
                       <br/><br/>
-                      <input type="submit" value="Publish" />
+                      <input type="submit" value="Update" />
                     </form>
                     {/* <button
                       onClick={(e) => {

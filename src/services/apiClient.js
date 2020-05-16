@@ -44,6 +44,10 @@ class ApiClient {
     return this.apiClient.get(`/driver/${id}`);
   }
 
+  updateCar(id, body) {
+    return this.apiClient.put(`/cars/${id}`, body)
+  }
+
   deleteCar(id) {
     return this.apiClient.delete(id);
   }

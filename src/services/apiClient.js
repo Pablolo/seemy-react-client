@@ -49,7 +49,7 @@ class ApiClient {
   }
 
   deleteCar(id) {
-    return this.apiClient.delete(id);
+    return this.apiClient.delete(`/cars/${id}`, id);
   }
 }
 

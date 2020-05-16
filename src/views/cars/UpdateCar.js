@@ -74,21 +74,20 @@ class UpdateCar extends Component {
       });
   };
 
-  // handleDelete = (id) => {
-  //   apiClient
-  //     .deleteCar(id)
-  //     .then(() => {
-  //       console.log("done");
-  //       this.loadResorts();
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  handleDelete = (id) => {
+    apiClient
+      .deleteCar(id)
+      .then(() => {
+        console.log("Car Deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { car, status, error, match } = this.state;
-    // console.log(car);
+    const carId = this.props.match.params.id;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
@@ -242,13 +241,13 @@ class UpdateCar extends Component {
                       <br/><br/>
                       <input type="submit" value="Update" />
                     </form>
-                    {/* <button
+                    <button
                       onClick={(e) => {
-                        this.handleDelete();
+                        this.handleDelete(carId);
                       }}
                     >
                       Delete Car
-                    </button> */}
+                    </button>
                   </div>  
                 }
               </div>

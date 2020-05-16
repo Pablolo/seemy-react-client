@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 class LeanCarDetail extends Component {
   render() {
     const { car } = this.props;
+    // console.log('malditas props', car)
     return (
       <Link to={`/cars/${car._id}`}> 
         <div>

@@ -26,7 +26,7 @@ class DriverProfile extends Component {
     .getUserCars(userId)
     .then((response) => {
       this.setState({
-        cars: response.data.publishedCars,
+        cars: response.data.carDestructured,
         user: response.data.user,
         status: STATUS.LOADED,
       })

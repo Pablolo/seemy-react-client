@@ -15,6 +15,7 @@ const STATUS = {
 class DriverProfile extends Component {
   state = {
     cars: null,
+    user: undefined,
     error: undefined,
     status: STATUS.LOADING,
   }
@@ -25,7 +26,8 @@ class DriverProfile extends Component {
     .getUserCars(userId)
     .then((response) => {
       this.setState({
-        cars: response.data,
+        cars: response.data.publishedCars,
+        user: response.data.user,
         status: STATUS.LOADED,
       })
     })
@@ -48,9 +50,9 @@ class DriverProfile extends Component {
   }
 
   render() {
-    const { onLogout, user } = this.props;
+    const { onLogout } = this.props;
     console.log('logged user props', this.props)
-    const { status, error, cars } = this.state;
+    const { status, error, cars, user } = this.state;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
@@ -58,9 +60,9 @@ class DriverProfile extends Component {
         return <div>
                 <h1>Driver Profile</h1>
                 <div>
-                  <img src={process.env.REACT_APP_BACKEND_URI + user.data.profilePhoto} alt={user.data.firstName}/>
-                  <p>{user.data.firstName} {user.data.lastName}</p>
-                  <p>{user.data.email}</p> 
+                  <img src={process.env.REACT_APP_BACKEND_URI + user.profilePhoto} alt={user.firstName}/>
+                  <p>{user.firstName} {user.lastName}</p>
+                  <p>{user.email}</p> 
                 </div>
                 <button onClick={onLogout}>Logout</button>
                 { !cars && <Link to={'/cars/add'}><button>List Your Car</button></Link>}

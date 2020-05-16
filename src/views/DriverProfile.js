@@ -51,7 +51,6 @@ class DriverProfile extends Component {
 
   render() {
     const { onLogout } = this.props;
-    console.log('logged user props', this.props)
     const { status, error, cars, user } = this.state;
     switch (status) {
       case STATUS.LOADING:

@@ -6,10 +6,10 @@ class CarDetails extends Component {
     const {car} = this.props;
     return (
       <div>
-        <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.carSpecs.make + car.carSpecs.model}/>
-        <p>{car.carSpecs.make} {car.carSpecs.model}</p>
+        <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.make + car.model}/>
+        <p>{car.make} {car.model}</p>
         <div>
-          <p>Year {car.carSpecs.year}</p>
+          <p>Year {car.year}</p>
           <p>{car.transmission} Transmission</p>
         </div>
         <div>

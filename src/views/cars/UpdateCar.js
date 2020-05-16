@@ -53,21 +53,10 @@ class UpdateCar extends Component {
 
   handleChange = (e) => {
     const { car } = { ...this.state };
-
     const currentState = car;
-
     const { name, value } = e.target;
-    console.log('name', name)
-    console.log('value', value)
-
     currentState[name] = value;
-
     this.setState({ car: currentState });
-    
-    
-    // this.setState({
-    //   [e.target.name]: e.target.value,
-    // });
   };
 
   // handleDelete = (id) => {
@@ -84,7 +73,6 @@ class UpdateCar extends Component {
 
   render() {
     const { car, status, error, match } = this.state;
-    // console.log(car)
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
@@ -106,7 +94,7 @@ class UpdateCar extends Component {
                         type="text"
                         name="streetAdress"
                         id="streetAdress"
-                        defaultValue={car.location.streetAdress}
+                        defaultValue={car.streetAdress}
                         onChange={this.handleChange}
                       />
                       <label htmlFor="postalCode">Postal Code</label>

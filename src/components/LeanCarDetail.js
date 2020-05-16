@@ -7,8 +7,8 @@ class LeanCarDetail extends Component {
     return (
       <Link to={`/cars/${car._id}`}> 
         <div>
-          <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.carSpecs.make + car.carSpecs.model}/>
-          <p>{car.carSpecs.make} {car.carSpecs.model} {car.carSpecs.year}</p>
+          <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.make}/>
+          <p>{car.make} {car.model} {car.year}</p>
           <p>{car.dailyPrice}€/day</p>
         </div>
       </Link>

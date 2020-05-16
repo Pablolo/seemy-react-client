@@ -45,7 +45,7 @@ class Cars extends Component {
   searchFilterRendering = () => {
     const { cars, searchQuery } = this.state;
     let carsUpdated = cars.map((car) => {
-      car.fullName = `${car.carSpecs.make} ${car.carSpecs.model} ${car.carSpecs.year}`;
+      car.fullName = `${car.make} ${car.model} ${car.year}`;
       return car;
     })
     if (searchQuery === '') {

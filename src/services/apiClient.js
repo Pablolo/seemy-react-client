@@ -43,6 +43,10 @@ class ApiClient {
   getUserCars(id) {
     return this.apiClient.get(`/driver/${id}`);
   }
+
+  deleteCar(id) {
+    return this.apiClient.delete(id);
+  }
 }
 
 const apiClient = new ApiClient();

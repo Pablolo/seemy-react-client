@@ -49,6 +49,7 @@ class DriverProfile extends Component {
 
   render() {
     const { onLogout, user } = this.props;
+    console.log('logged user props', this.props)
     const { status, error, cars } = this.state;
     switch (status) {
       case STATUS.LOADING:
@@ -57,7 +58,7 @@ class DriverProfile extends Component {
         return <div>
                 <h1>Driver Profile</h1>
                 <div>
-                  <img src={process.env.REACT_APP_BACKEND_URI + user.data.profilePhoto} alt=""/>
+                  <img src={process.env.REACT_APP_BACKEND_URI + user.data.profilePhoto} alt={user.data.firstName}/>
                   <p>{user.data.firstName} {user.data.lastName}</p>
                   <p>{user.data.email}</p> 
                 </div>

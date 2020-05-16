@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { withAuth } from "../../context/authContext";
 
@@ -12,22 +13,6 @@ const STATUS = {
 
 class UpdateCar extends Component {
   state = {
-    // streetAdress: '',
-    // city: '',
-    // province: '',
-    // postalCode: '',
-    // year: '',
-    // make: '',
-    // model: '',
-    // odometer: '',
-    // advanceNoticeHours: '',
-    // maxDurationDays: '',
-    // transmission: '',
-    // image: '',
-    // description: '',
-    // licensePlate: '',
-    // dailyPrice: '',
-    // owner: '',
     car: null,
     error: undefined,
     status: STATUS.LOADING,
@@ -50,6 +35,14 @@ class UpdateCar extends Component {
         status: STATUS.LOADED,
       })
     })
+    .then(() => {
+      const { car, personLoggedIn } = this.state;
+      if (car.owner === personLoggedIn) {
+        this.setState({
+          match: true,
+        })
+      }
+    })
     .catch((error) => {
       this.setState({
         error: error.name,
@@ -58,24 +51,24 @@ class UpdateCar extends Component {
     })
   }
 
-  isMatch = () => {
-    const { car, personLoggedIn } = this.state;
-    if (car.owner === personLoggedIn) {
-      this.setState({
-        match: true,
-      })
-    }
-  }
-
   render() {
-    const { status, error } = this.state;
+    const { status, error, match } = this.state;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
       case STATUS.LOADED:
         return <div>
-                <h1>Update your Car Details and Price</h1>
-                {/* {this.isMatch()} */}
+                { !match && 
+                  <div>
+                    <h1>You're not allowed here</h1> 
+                    <Link to={'/'}><button>Return to the Homepage</button></Link>
+                  </div>  
+                }
+                { match &&
+                  <div> 
+                    <h1>Update your Car Details and Price</h1>
+                  </div>  
+                }
               </div>
       case STATUS.ERROR:
         return <div>{error}</div>

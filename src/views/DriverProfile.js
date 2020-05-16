@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { withAuth } from "../context/authContext";
 import apiClient from '../services/apiClient';
@@ -39,7 +40,10 @@ class DriverProfile extends Component {
   showUserCars = () => {
     const { cars } = this.state;
     return cars.map((car, index) => {
-      return <LeanCarDetail key={index} car={car}/>
+      return <div key={index}>
+               <LeanCarDetail car={car}/>
+               <Link to={`/cars/${car._id}/update`}><button>Update Car Details</button></Link>
+             </div>
     })
   }
 
@@ -58,9 +62,10 @@ class DriverProfile extends Component {
                   <p>{user.data.email}</p> 
                 </div>
                 <button onClick={onLogout}>Logout</button>
+                { !cars && <Link to={'/cars/add'}><button>List Your Car</button></Link>}
                 { cars && <div>
                   <h2>Your Published Cars</h2> 
-                  <p>Click on each car to edit its details or price</p>
+                  <p>Click on each car to see your publication live or click on the button to edit</p>
                   {this.showUserCars()}
                 </div> }
               </div>

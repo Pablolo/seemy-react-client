@@ -11,6 +11,7 @@ import LoginWithAuth from './views/auth/Login';
 import SignupWithAuth from './views/auth/Signup';
 import Cars from './views/cars/Cars';
 import CarDetails from './views/cars/CarDetails';
+import UpdateCar from './views/cars/UpdateCar';
 import ListYourCar from './views/cars/ListYourCar';
 import LearnMore from './views/LearnMore';
 import DriverProfile from './views/DriverProfile';
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path={'/cars'} component={Cars}/>
             <PrivateRoute exact path={'/cars/add'} component={ListYourCar} />
             <Route exact path={'/cars/:id'} component={CarDetails}/>
+            <Route exact path={'/cars/:id/update'} component={UpdateCar}/>
             <Route exact path={'/learn-more'} component={LearnMore}/>
             <AnonRoute exact path={'/login'} component={LoginWithAuth}/>
             <AnonRoute exact path={'/signup'} component={SignupWithAuth}/>

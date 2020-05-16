@@ -25,7 +25,6 @@ class ListYourCar extends Component {
   };
 
   componentDidMount = () => {
-    console.log('addcar', this.props.user)
     if (this.props.user !== null) {
       this.setState({
         owner: this.props.user._id

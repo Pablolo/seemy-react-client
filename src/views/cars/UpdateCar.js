@@ -75,10 +75,12 @@ class UpdateCar extends Component {
   };
 
   handleDelete = (id) => {
+    const { personLoggedIn } = this.state;
+    const { history } = this.props;
     apiClient
       .deleteCar(id)
       .then(() => {
-        console.log("Car Deleted");
+        history.push(`/driver/${personLoggedIn}`);
       })
       .catch((error) => {
         console.log(error);

@@ -14,7 +14,7 @@ const STATUS = {
 
 class DriverProfile extends Component {
   state = {
-    cars: null,
+    cars: undefined,
     user: undefined,
     error: undefined,
     status: STATUS.LOADING,
@@ -41,12 +41,21 @@ class DriverProfile extends Component {
 
   showUserCars = () => {
     const { cars } = this.state;
-    return cars.map((car, index) => {
-      return <div key={index}>
-               <LeanCarDetail car={car}/>
-               <Link to={`/cars/${car._id}/update`}><button>Update Car Details</button></Link>
+    if (typeof cars === undefined) {
+      return <div>No cars published yet</div>
+    } else if (Array.isArray( cars )) {
+      return cars.map((car, index) => {
+        return <div key={index}>
+                 <LeanCarDetail car={car}/>
+                 <Link to={`/cars/${car._id}/update`}><button>Update Car Details</button></Link>
+               </div>
+      })
+    } else if (typeof cars === 'object') {
+      return <div>
+               <LeanCarDetail car={cars}/>
+               <Link to={`/cars/${cars._id}/update`}><button>Update Car Details</button></Link>
              </div>
-    })
+    }
   }
 
   render() {

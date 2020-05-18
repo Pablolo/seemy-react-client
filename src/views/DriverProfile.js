@@ -18,6 +18,7 @@ class DriverProfile extends Component {
     user: undefined,
     error: undefined,
     status: STATUS.LOADING,
+    match: false,
   }
 
   componentDidMount = () => {
@@ -25,11 +26,20 @@ class DriverProfile extends Component {
     apiClient
     .getUserCars(userId)
     .then((response) => {
+
       this.setState({
         cars: response.data.carDestructured,
         user: response.data.user,
         status: STATUS.LOADED,
       })
+    })
+    .then(() => {
+      const { user } = this.state;
+      if (user._id === this.props.user.data._id) {
+        this.setState({
+          match: true,
+        })
+      }
     })
     .catch((error) => {
       this.setState({
@@ -40,27 +50,27 @@ class DriverProfile extends Component {
   }
 
   showUserCars = () => {
-    const { cars } = this.state;
+    const { cars, match } = this.state;
     if (typeof cars === undefined) {
-      return <div>No cars published yet</div>
+      return <div>No cars published yet!</div>
     } else if (Array.isArray( cars )) {
       return cars.map((car, index) => {
         return <div key={index}>
                  <LeanCarDetail car={car}/>
-                 <Link to={`/cars/${car._id}/update`}><button>Update Car Details</button></Link>
+                 { match && <Link to={`/cars/${car._id}/update`}><button>Update Car Details</button></Link> }
                </div>
       })
     } else if (typeof cars === 'object') {
       return <div>
                <LeanCarDetail car={cars}/>
-               <Link to={`/cars/${cars._id}/update`}><button>Update Car Details</button></Link>
+               { match && <Link to={`/cars/${cars._id}/update`}><button>Update Car Details</button></Link> }
              </div>
     }
   }
 
   render() {
     const { onLogout } = this.props;
-    const { status, error, cars, user } = this.state;
+    const { status, error, cars, user, match } = this.state;
     switch (status) {
       case STATUS.LOADING:
         return <div>Loading...</div>
@@ -70,15 +80,24 @@ class DriverProfile extends Component {
                 <div>
                   <img src={process.env.REACT_APP_BACKEND_URI + user.profilePhoto} alt={user.firstName}/>
                   <p>{user.firstName} {user.lastName}</p>
-                  <p>{user.email}</p> 
+                  { match && <p>{user.email}</p> }
                 </div>
-                <button onClick={onLogout}>Logout</button>
-                { !cars && <Link to={'/cars/add'}><button>List Your Car</button></Link>}
-                { cars && <div>
+                { match && <button onClick={onLogout}>Logout</button> }
+                { match && !cars && <Link to={'/cars/add'}><button>List Your Car</button></Link>}
+                { match && cars && <div>
                   <h2>Your Published Cars</h2> 
-                  <p>Click on each car to see your publication live or click on the button to edit</p>
+                  <p>Click on each car to see your publication or click on the button to edit</p> 
+                  </div>
+                }
+                { !match && cars && <div>
+                  <h2>{user.firstName}'s Published Cars</h2> 
+                  <p>Click on each car to see its details or book it!</p> 
+                  </div>
+                }
+                <div>
                   {this.showUserCars()}
-                </div> }
+                </div> 
+                {/* { !match && } */}
               </div>
       case STATUS.ERROR:
         return <div>{error}</div>

@@ -37,7 +37,7 @@ class AuthProvider extends Component {
   componentDidMount() {
     apiClient
     .whoami()
-    .then((user) => {
+    .then(({ data: user }) => {
       this.setState({
         isLoading: false,
         isLoggedIn: true,
@@ -68,6 +68,7 @@ class AuthProvider extends Component {
     apiClient
       .login({ email, password })
       .then(({ data: user }) => {
+        console.log('user handlelogin', user)
         this.setState({
           isLoggedIn: true,
           user,

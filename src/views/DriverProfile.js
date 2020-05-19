@@ -23,10 +23,11 @@ class DriverProfile extends Component {
 
   componentDidMount = () => {
     const userId = this.props.match.params.id;
+    console.log('props user', this.props)
+    // console.log('this error', this.props.user.data._id);
     apiClient
     .getUserCars(userId)
     .then((response) => {
-
       this.setState({
         cars: response.data.carDestructured,
         user: response.data.user,
@@ -35,7 +36,7 @@ class DriverProfile extends Component {
     })
     .then(() => {
       const { user } = this.state;
-      if (user._id === this.props.user.data._id) {
+      if (user._id === this.props.user._id) {
         this.setState({
           match: true,
         })
@@ -97,7 +98,6 @@ class DriverProfile extends Component {
                 <div>
                   {this.showUserCars()}
                 </div> 
-                {/* { !match && } */}
               </div>
       case STATUS.ERROR:
         return <div>{error}</div>

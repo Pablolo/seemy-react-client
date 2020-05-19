@@ -11,7 +11,7 @@ class Navbar extends Component {
   componentDidMount() {
     if (this.props.user !== null) {
       this.setState({
-        userId: this.props.user.data._id
+        userId: this.props.user._id
       })
     }
   }

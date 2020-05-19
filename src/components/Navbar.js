@@ -19,7 +19,6 @@ class Navbar extends Component {
   render() {
     const { isLoggedIn } = this.props;
     const { userId } = this.state;
-    // console.log('navbar props', this.props)
     return (
       <nav>
          <Link to='/' className='seemy-logo'>seemy</Link>

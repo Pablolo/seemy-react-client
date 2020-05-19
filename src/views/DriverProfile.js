@@ -21,11 +21,7 @@ class DriverProfile extends Component {
     match: false,
   }
 
-  // getAxiosData = () => {
-
-  // }
-
-  componentDidMount = () => {
+  getAxiosData = () => {
     const userId = this.props.match.params.id;
     apiClient
     .getUserCars(userId)
@@ -53,33 +49,13 @@ class DriverProfile extends Component {
     })
   }
 
+  componentDidMount = () => {
+    this.getAxiosData();
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      const userId = this.props.match.params.id;
-      apiClient
-      .getUserCars(userId)
-      .then((response) => {
-        this.setState({
-          cars: response.data.carDestructured,
-          user: response.data.user,
-          status: STATUS.LOADED,
-        })
-      })
-      .then(() => {
-        const { user } = this.state;
-        const loggedUser = this.props.user._id;
-        if (user._id === loggedUser) {
-          this.setState({
-            match: true,
-          })
-        }
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.name,
-          status: STATUS.ERROR,
-        })
-      })
+      this.getAxiosData();
     }
   }
 

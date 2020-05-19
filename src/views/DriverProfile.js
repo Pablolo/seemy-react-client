@@ -22,9 +22,8 @@ class DriverProfile extends Component {
   }
 
   componentDidMount = () => {
+    // console.log('reloading')
     const userId = this.props.match.params.id;
-    console.log('props user', this.props)
-    // console.log('this error', this.props.user.data._id);
     apiClient
     .getUserCars(userId)
     .then((response) => {
@@ -36,7 +35,8 @@ class DriverProfile extends Component {
     })
     .then(() => {
       const { user } = this.state;
-      if (user._id === this.props.user._id) {
+      const loggedUser = this.props.user._id;
+      if (user._id === loggedUser) {
         this.setState({
           match: true,
         })

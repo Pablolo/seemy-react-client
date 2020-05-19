@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BookingForm from './BookingForm';
+import { Link } from 'react-router-dom';
 
 class CarDetails extends Component {
   render() {
@@ -19,7 +20,7 @@ class CarDetails extends Component {
         <p>Hosted by</p>
         <div>
           <img src={process.env.REACT_APP_BACKEND_URI + '/images/misc/default-avatar.png'} alt=""/>
-          <p>{car.owner}</p>
+          <Link to={`/driver/${car.owner}`}>View Owner Profile</Link> 
         </div>
         <p>{car.description}</p>
       </div>

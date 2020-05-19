@@ -26,7 +26,7 @@ class ListYourCar extends Component {
 
   componentDidMount = () => {
     this.setState({
-      owner: this.props.user.data._id
+      owner: this.props.user._id
     })
   }
 
@@ -39,7 +39,7 @@ class ListYourCar extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    const userId = this.props.user.data._id;
+    const userId = this.props.user._id;
     const { streetAdress, 
             city, 
             province, 

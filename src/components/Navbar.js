@@ -16,6 +16,14 @@ class Navbar extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.user._id !== this.props.user._id) {
+      this.setState({
+        userId: this.props.user._id
+      })
+    }
+  }
+
   render() {
     const { isLoggedIn } = this.props;
     const { userId } = this.state;

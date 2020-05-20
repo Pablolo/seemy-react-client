@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line
 const validEmailRegex = 
+// eslint-disable-next-line
   RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+
+const validateForm = (errors) => {
+  let valid = true;
+  Object.values(errors).forEach(
+    (val) => val.length > 0 && (valid = false)
+  );
+  return valid;
+}
 
 class Signup extends Component {
   state = { 
@@ -20,35 +28,11 @@ class Signup extends Component {
     }
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { firstName, lastName, email, password } = this.state;
-    const { onSignup } = this.props;
-    if ( firstName !== '' && lastName !== '' && email !== '' && password !== '') {
-      onSignup({ firstName, lastName, email, password });
-    }
-  };
-
-  // cleanForm = () => {
-  //   this.setState({
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     password: '',
-  //   });
-  // };
-
-  // handleChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    let errors = this.state.errors;
-  
+    let { errors } = this.state;
+
     switch (name) {
       case 'firstName': 
         errors.firstName = 
@@ -76,14 +60,23 @@ class Signup extends Component {
         break;
       // no default
     }
-  
-    this.setState({errors, [name]: value}, ()=> {
-        console.log(errors);
-    })
+    this.setState({errors, [name]: value});
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, password, errors } = this.state;
+    const { onSignup } = this.props;
+    if (validateForm(errors) && firstName !== '' && lastName !== '' && email !== '' && password !== '') {
+      console.info('Valid Form');
+      // onSignup({ firstName, lastName, email, password });
+    } else {
+      console.error('Invalid Form')
+    }
+  }
+
   render() {
-    const { firstName, lastName, email, password } = this.state;
+    const { firstName, lastName, email, password, errors } = this.state;
 
     return (
       <div>

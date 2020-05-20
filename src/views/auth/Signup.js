@@ -13,7 +13,6 @@ class Signup extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { firstName, lastName, email, password } = this.state;
-    console.log('propsss', this.props)
     const { onSignup } = this.props;
     if ( firstName !== '' && lastName !== '' && email !== '' && password !== '') {
       onSignup({ firstName, lastName, email, password });

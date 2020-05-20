@@ -17,16 +17,21 @@ class Navbar extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.user._id !== this.props.user._id) {
-      this.setState({
-        userId: this.props.user._id
-      })
+    // console.log('prevprops user', prevProps.user)
+    // console.log('user props now', this.props.user)
+    if (prevProps.user && this.props.user) {
+      if (prevProps.user._id !== this.props.user._id) {
+        this.setState({
+          userId: this.props.user._id
+        })
+      }
     }
   }
 
   render() {
     const { isLoggedIn } = this.props;
     const { userId } = this.state;
+    // console.log('state user id of navbar', userId)
     return (
       <nav>
          <Link to='/' className='seemy-logo'>seemy</Link>

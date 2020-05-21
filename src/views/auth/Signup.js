@@ -69,9 +69,9 @@ class Signup extends Component {
     const { onSignup } = this.props;
     if (validateForm(errors) && firstName !== '' && lastName !== '' && email !== '' && password !== '') {
       console.info('Valid Form');
-      // onSignup({ firstName, lastName, email, password });
+      onSignup({ firstName, lastName, email, password });
     } else {
-      console.error('Invalid Form')
+      console.error('Invalid Form');
     }
   }
 
@@ -93,6 +93,7 @@ class Signup extends Component {
             value={firstName}
             onChange={this.handleChange}
             noValidate
+            required
           />
           {errors.firstName.length > 0 && <span className='signup-error'>{errors.firstName}</span>}
           <br></br>
@@ -106,6 +107,7 @@ class Signup extends Component {
             value={lastName}
             onChange={this.handleChange}
             noValidate
+            required
           />
           {errors.lastName.length > 0 && <span className='signup-error'>{errors.lastName}</span>}
           <br></br>
@@ -119,9 +121,10 @@ class Signup extends Component {
             value={email}
             onChange={this.handleChange}
             noValidate
+            required
           />
           {errors.email.length > 0 && <span className='signup-error'>{errors.email}</span>}
-          {errors.email.length === 0 && email !== '' && <span className='signup-correct'>Your Email is correct</span>}
+          {errors.email.length === 0 && email !== '' && <span className='signup-valid'>Your Email is correct</span>}
           <br></br>
           <label htmlFor="password">Password</label>
           <br></br>
@@ -132,10 +135,12 @@ class Signup extends Component {
             placeholder="Must be at least 8 characters in length. White spaces are not allowed"
             value={password}
             onChange={this.handleChange}
+            minLength="8"
             noValidate
+            required
           />
           {errors.password.length > 0 && <span className='signup-error'>{errors.password}</span>}
-          {errors.password.length === 0 && password !== '' && <span className='signup-correct'>Your Password is correct</span>}
+          {errors.password.length === 0 && password !== '' && <span className='signup-valid'>Your Password is correct</span>}
           <br></br>
           <p>*All fields are required</p>
           <input type="submit" value="Sign Up" />

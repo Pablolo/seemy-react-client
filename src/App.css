@@ -7,12 +7,12 @@
 } 
 
 .signup-error {
-  color:#db2269;
+  color:#d35400;
   font-size: 0.625em;
   display: relative;
 }
 
-.signup-correct {
+.signup-valid {
   color:#2ecc71;
   font-size: 0.625em;
   display: relative;

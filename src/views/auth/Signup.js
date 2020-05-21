@@ -77,7 +77,7 @@ class Signup extends Component {
 
   render() {
     const { firstName, lastName, email, password, errors } = this.state;
-
+    const { error } = this.props;
     return (
       <div>
         <h1>Let's get Started</h1>
@@ -143,6 +143,7 @@ class Signup extends Component {
           {errors.password.length === 0 && password !== '' && <span className='signup-valid'>Your Password is correct</span>}
           <br></br>
           <p>*All fields are required</p>
+          {error &&  <div>{error}. Do you want to <Link to={'/login'}>Log In</Link> instead?</div>}
           <input type="submit" value="Sign Up" />
         </form>
         <p>Already have an account?</p><Link to={'/login'}><button>Log In</button></Link> 

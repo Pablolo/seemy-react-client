@@ -9,7 +9,7 @@ export const withAuth = (Comp) => {
     render() {
       return (
         <AuthContext.Consumer>
-          {({ handleSignup, handleLogin, user, isLoggedIn, handleLogout }) => {
+          {({ handleSignup, handleLogin, user, isLoggedIn, handleLogout, error }) => {
             return (
               <Comp 
                 onSignup={handleSignup}
@@ -17,6 +17,7 @@ export const withAuth = (Comp) => {
                 user={user}
                 isLoggedIn={isLoggedIn}
                 onLogout={handleLogout}
+                error={error}
                 {...this.props}
               />
             )
@@ -32,6 +33,7 @@ class AuthProvider extends Component {
     isLoggedIn: false,
     user: null,
     isLoading: true,
+    error: undefined,
   };
 
   componentDidMount() {
@@ -50,6 +52,7 @@ class AuthProvider extends Component {
         isLoggedIn: false,
         user: null,
       });
+      console.log(error);
     })
   } 
 
@@ -57,7 +60,6 @@ class AuthProvider extends Component {
     apiClient
     .signup({ firstName, lastName, email, password })
     .then(({ data: user }) => {
-      // console.log(res);
       this.setState({
         isLoggedIn: true,
         user,
@@ -65,6 +67,10 @@ class AuthProvider extends Component {
     })
     .catch((error) => {
       console.log(error);
+      console.log(error.response);
+      this.setState({
+        error: error.response.data.code,
+      });
     });
   }
 
@@ -101,12 +107,13 @@ class AuthProvider extends Component {
 
   render() {
     const { children } = this.props;
-    const { isLoggedIn, user, isLoading } = this.state;
+    const { isLoggedIn, user, isLoading, error } = this.state;
     return (
       <AuthContext.Provider
         value={{
           isLoggedIn,
           user,
+          error,
           handleSignup: this.handleSignup,
           handleLogin: this.handleLogin,
           handleLogout: this.handleLogout,

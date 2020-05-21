@@ -144,7 +144,7 @@ class Signup extends Component {
           <br></br>
           <p>*All fields are required</p>
           {error &&  <div>{error}. Do you want to <Link to={'/login'}>Log In</Link> instead?</div>}
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Create Account" />
         </form>
         <p>Already have an account?</p><Link to={'/login'}><button>Log In</button></Link> 
       </div>      

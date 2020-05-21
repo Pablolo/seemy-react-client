@@ -6,6 +6,10 @@ class Login extends Component {
   state = { 
     email: '',
     password: '',
+    errors: {
+      email: '',
+      password: '',
+    }
   };
 
   handleSubmit = (e) => {
@@ -32,7 +36,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-
+    const { error } = this.props;
     return (
       <div>
         <h1>Welcome Back</h1>
@@ -40,7 +44,7 @@ class Login extends Component {
           <label htmlFor="email">Your Email</label>
           <br></br>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="Email"
@@ -59,6 +63,7 @@ class Login extends Component {
             onChange={this.handleChange}
           />
           <br></br>
+          {error && <div className='signup-error'>{error}</div>}
           <input type="submit" value="Log In" />
         </form>
         <p>Don't have an account?</p><Link to={'/signup'}><button>Sign Up</button></Link>

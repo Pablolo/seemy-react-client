@@ -85,6 +85,7 @@ class AuthProvider extends Component {
         this.setState({
           isLoggedIn: false,
           user: null,
+          error: error.response.data.code,
         });
       });
   };

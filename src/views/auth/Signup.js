@@ -50,12 +50,12 @@ class Signup extends Component {
         errors.email = 
           validEmailRegex.test(value)
             ? ''
-            : 'Email is not valid';
+            : 'Please enter a valid email adress';
         break;
       case 'password': 
         errors.password = 
           value.length < 8
-            ? 'Password must be 8 characters long'
+            ? 'Password must be at least 8 characters long'
             : '';
         break;
       // no default
@@ -81,7 +81,7 @@ class Signup extends Component {
     return (
       <div>
         <h1>Let's get Started</h1>
-        <h2>Create your Account</h2>
+        <h2>Create your Account*</h2>
         <form onSubmit={this.handleSubmit}>
         <label htmlFor="firstName">First Name</label>
         <br></br>
@@ -94,6 +94,7 @@ class Signup extends Component {
             onChange={this.handleChange}
             noValidate
           />
+          {errors.firstName.length > 0 && <span className='signup-error'>{errors.firstName}</span>}
           <br></br>
           <label htmlFor="lastName">Last Name</label>
           <br></br>
@@ -106,6 +107,7 @@ class Signup extends Component {
             onChange={this.handleChange}
             noValidate
           />
+          {errors.lastName.length > 0 && <span className='signup-error'>{errors.lastName}</span>}
           <br></br>
           <label htmlFor="email">Email</label>
           <br></br>
@@ -118,6 +120,8 @@ class Signup extends Component {
             onChange={this.handleChange}
             noValidate
           />
+          {errors.email.length > 0 && <span className='signup-error'>{errors.email}</span>}
+          {errors.email.length === 0 && email !== '' && <span className='signup-correct'>Your Email is correct</span>}
           <br></br>
           <label htmlFor="password">Password</label>
           <br></br>
@@ -130,6 +134,8 @@ class Signup extends Component {
             onChange={this.handleChange}
             noValidate
           />
+          {errors.password.length > 0 && <span className='signup-error'>{errors.password}</span>}
+          {errors.password.length === 0 && password !== '' && <span className='signup-correct'>Your Password is correct</span>}
           <br></br>
           <p>*All fields are required</p>
           <input type="submit" value="Sign Up" />

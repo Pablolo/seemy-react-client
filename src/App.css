@@ -5,3 +5,15 @@
   text-decoration: none;
   color: black;
 } 
+
+.signup-error {
+  color:#db2269;
+  font-size: 0.625em;
+  display: relative;
+}
+
+.signup-correct {
+  color:#2ecc71;
+  font-size: 0.625em;
+  display: relative;
+}

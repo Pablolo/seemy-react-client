@@ -7,8 +7,8 @@ class Login extends Component {
     email: '',
     password: '',
     errors: {
-      email: '',
-      password: '',
+      email: false,
+      password: false,
     }
   };
 
@@ -18,14 +18,32 @@ class Login extends Component {
     const { onLogin } = this.props;
     if (email !== '' && password !== '') {
       onLogin({ email, password });
+      this.setState({
+        errors: {
+          email: !email,
+          password: !password,
+        }
+      })
+    } else if (email === '' && password === '') {
+      this.setState({
+        errors: {
+          email: !email,
+          password: !password,
+        }
+      })
+    } else if (email === '' && password !== '') {
+      this.setState({
+        errors: {
+          email: !email,
+        }
+      })
+    } else if (email !== '' && password === '') {
+      this.setState({
+        errors: {
+          password: !password,
+        }
+      })
     }
-  };
-
-  cleanForm = () => {
-    this.setState({
-      email: "",
-      password: "",
-    });
   };
 
   handleChange = (e) => {
@@ -35,7 +53,7 @@ class Login extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, errors } = this.state;
     const { error } = this.props;
     return (
       <div>
@@ -51,6 +69,7 @@ class Login extends Component {
             value={email}
             onChange={this.handleChange}
           />
+          {errors.email && <div className='signup-error'>Email field cannot be empty</div>}
           <br></br>
           <label htmlFor="password">Password</label>
           <br></br>
@@ -62,6 +81,7 @@ class Login extends Component {
             value={password}
             onChange={this.handleChange}
           />
+          {errors.password && <div className='signup-error'>Password cannot be empty</div>}
           <br></br>
           {error && <div className='signup-error'>{error}</div>}
           <input type="submit" value="Log In" />

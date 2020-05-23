@@ -4,7 +4,7 @@ import { withAuth } from "../../context/authContext";
 
 import apiClient from '../../services/apiClient';
 
-class ListYourCar extends Component {
+class AddCar extends Component {
   state = {
     streetAdress: '',
     city: '',
@@ -230,4 +230,4 @@ class ListYourCar extends Component {
   }
 }
 
-export default withAuth(ListYourCar);
+export default withAuth(AddCar);

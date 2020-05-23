@@ -25,7 +25,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   isLoggedIn: PropTypes.bool,
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default withAuth(Navbar);

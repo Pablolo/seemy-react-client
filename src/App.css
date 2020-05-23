@@ -1,19 +1,1 @@
-.seemy-logo {
-  font-family: 'Exo', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  text-decoration: none;
-  color: black;
-} 
 
-.signup-error {
-  color:#d35400;
-  font-size: 0.8em;
-  display: relative;
-}
-
-.signup-valid {
-  color:#2ecc71;
-  font-size: 0.8em;
-  display: relative;
-}

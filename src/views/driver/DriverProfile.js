@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { withAuth } from '../context/authContext';
-import apiClient from '../services/apiClient';
+import { withAuth } from '../../context/authContext';
+import apiClient from '../../services/apiClient';
 
-import LeanCarDetail from '../components/LeanCarDetail';
+import LeanCarDetail from '../../components/LeanCarDetail';
 
 const STATUS = {
   LOADING: 'LOADING',

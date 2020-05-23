@@ -1,13 +1,13 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
-import { withAuth } from "../context/authContext";
+import { withAuth } from '../context/authContext';
 
 function AnonRoute({ component: Comp, isLoggedIn, ...rest }) {
   return (
     <Route
       {...rest}
-      render={(props) =>
+      render={props =>
         !isLoggedIn ? (
           <Comp {...props} />
         ) : (

@@ -1,17 +1,18 @@
+/* eslint-disable max-classes-per-file */
 import React, { Component } from 'react';
 
 import apiClient from '../services/apiClient';
 
 export const AuthContext = React.createContext();
 
-export const withAuth = (Comp) => {
+export const withAuth = Comp => {
   return class WithAuth extends Component {
     render() {
       return (
         <AuthContext.Consumer>
           {({ handleSignup, handleLogin, user, isLoggedIn, handleLogout, error }) => {
             return (
-              <Comp 
+              <Comp
                 onSignup={handleSignup}
                 onLogin={handleLogin}
                 user={user}
@@ -20,7 +21,7 @@ export const withAuth = (Comp) => {
                 error={error}
                 {...this.props}
               />
-            )
+            );
           }}
         </AuthContext.Consumer>
       );
@@ -38,39 +39,39 @@ class AuthProvider extends Component {
 
   componentDidMount() {
     apiClient
-    .whoami()
-    .then(({ data: user }) => {
-      this.setState({
-        isLoading: false,
-        isLoggedIn: true,
-        user,
+      .whoami()
+      .then(({ data: user }) => {
+        this.setState({
+          isLoading: false,
+          isLoggedIn: true,
+          user,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          isLoading: false,
+          isLoggedIn: false,
+          user: null,
+        });
       });
-    })
-    .catch((error) => {
-      this.setState({
-        isLoading: false,
-        isLoggedIn: false,
-        user: null,
-      });
-    })
-  } 
+  }
 
   handleSignup = ({ firstName, lastName, email, password }) => {
     apiClient
-    .signup({ firstName, lastName, email, password })
-    .then(({ data: user }) => {
-      this.setState({
-        isLoggedIn: true,
-        user,
+      .signup({ firstName, lastName, email, password })
+      .then(({ data: user }) => {
+        this.setState({
+          isLoggedIn: true,
+          user,
+        });
+      })
+      .catch(error => {
+        console.log(error.response);
+        this.setState({
+          error: error.response.data.code,
+        });
       });
-    })
-    .catch((error) => {
-      console.log(error.response);
-      this.setState({
-        error: error.response.data.code,
-      });
-    });
-  }
+  };
 
   handleLogin = ({ email, password }) => {
     apiClient
@@ -81,7 +82,7 @@ class AuthProvider extends Component {
           user,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         this.setState({
           isLoggedIn: false,
           user: null,
@@ -99,7 +100,7 @@ class AuthProvider extends Component {
           user: null,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -118,8 +119,8 @@ class AuthProvider extends Component {
           handleLogout: this.handleLogout,
         }}
       >
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && children} 
+        {isLoading && <div>Loading...</div>}
+        {!isLoading && children}
       </AuthContext.Provider>
     );
   }

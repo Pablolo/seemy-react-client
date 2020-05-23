@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { withAuth } from "../../context/authContext";
+import { withAuth } from '../../context/authContext';
 
 import apiClient from '../../services/apiClient';
 
@@ -26,60 +26,61 @@ class AddCar extends Component {
 
   componentDidMount = () => {
     this.setState({
-      owner: this.props.user._id
-    })
-  }
+      owner: this.props.user._id,
+    });
+  };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { history } = this.props;
     const userId = this.props.user._id;
-    const { streetAdress, 
-            city, 
-            province, 
-            postalCode, 
-            year, 
-            make, 
-            model, 
-            odometer, 
-            advanceNoticeHours, 
-            maxDurationDays, 
-            transmission,
-            image,
-            description,
-            licensePlate,
-            dailyPrice,
-            owner
-            } = this.state;
+    const {
+      streetAdress,
+      city,
+      province,
+      postalCode,
+      year,
+      make,
+      model,
+      odometer,
+      advanceNoticeHours,
+      maxDurationDays,
+      transmission,
+      image,
+      description,
+      licensePlate,
+      dailyPrice,
+      owner,
+    } = this.state;
     apiClient
-      .addCar({ 
-          streetAdress, 
-          city, 
-          province, 
-          postalCode, 
-          year, 
-          make, 
-          model, 
-          odometer, 
-          advanceNoticeHours, 
-          maxDurationDays, 
-          transmission,
-          image,
-          description,
-          licensePlate,
-          dailyPrice,
-          owner
-       })
-      .then((res) => {
+      .addCar({
+        streetAdress,
+        city,
+        province,
+        postalCode,
+        year,
+        make,
+        model,
+        odometer,
+        advanceNoticeHours,
+        maxDurationDays,
+        transmission,
+        image,
+        description,
+        licensePlate,
+        dailyPrice,
+        owner,
+      })
+      .then(res => {
         history.push(`/driver/${userId}`);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -107,87 +108,34 @@ class AddCar extends Component {
             onChange={this.handleChange}
           />
           <label htmlFor="city">City</label>
-          <input
-            type="text"
-            name="city"
-            id="city"
-            placeholder="City"
-            onChange={this.handleChange}
-          />
+          <input type="text" name="city" id="city" placeholder="City" onChange={this.handleChange} />
           <label htmlFor="province">Province</label>
-          <input
-            type="text"
-            name="province"
-            id="province"
-            placeholder="Province"
-            onChange={this.handleChange}
-          />
+          <input type="text" name="province" id="province" placeholder="Province" onChange={this.handleChange} />
           <h2>Car Details</h2>
           <label htmlFor="make">Make</label>
-          <input
-            type="text"
-            name="make"
-            id="make"
-            placeholder="Make"
-            onChange={this.handleChange}
-          />
+          <input type="text" name="make" id="make" placeholder="Make" onChange={this.handleChange} />
           <label htmlFor="model">Model</label>
-          <input
-            type="text"
-            name="model"
-            id="model"
-            placeholder="Model"
-            onChange={this.handleChange}
-          />
+          <input type="text" name="model" id="model" placeholder="Model" onChange={this.handleChange} />
           <label htmlFor="year">Year</label>
-          <input
-            type="number"
-            name="year"
-            id="year"
-            placeholder="Year"
-            onChange={this.handleChange}
-          />
+          <input type="number" name="year" id="year" placeholder="Year" onChange={this.handleChange} />
           <label htmlFor="odometer">Odometer</label>
-          <input
-            type="number"
-            name="odometer"
-            id="odometer"
-            placeholder="Odometer"
-            onChange={this.handleChange}
-          />
-           <label htmlFor="licensePlate">License Plate Number</label>
+          <input type="number" name="odometer" id="odometer" placeholder="Odometer" onChange={this.handleChange} />
+          <label htmlFor="licensePlate">License Plate Number</label>
           <input
             type="text"
             name="licensePlate"
             id="licensePlate"
             placeholder="License Plate"
             onChange={this.handleChange}
-          /> (this will not be public)
-          <input 
-            type="radio" 
-            id="manual" 
-            name="transmission" 
-            value="manual" 
-            onChange={this.handleChange}
-          />
+          />{' '}
+          (this will not be public)
+          <input type="radio" id="manual" name="transmission" value="manual" onChange={this.handleChange} />
           <label htmlFor="manual">Manual</label>
-          <input 
-            type="radio" 
-            id="automatic" 
-            name="transmission" 
-            value="automatic" 
-            onChange={this.handleChange}             
-          />
+          <input type="radio" id="automatic" name="transmission" value="automatic" onChange={this.handleChange} />
           <label htmlFor="automatic">Automatic</label>
           <h2>Car Photos</h2>
           <label htmlFor="image">Photo</label>
-          <input
-            type="text"
-            name="image"
-            id="image"
-            placeholder="Image URL"
-            onChange={this.handleChange}
-          />
+          <input type="text" name="image" id="image" placeholder="Image URL" onChange={this.handleChange} />
           <h2>Car Availability</h2>
           <label htmlFor="advanceNoticeHours">Advance Notice (Hours)</label>
           <input
@@ -213,16 +161,13 @@ class AddCar extends Component {
             id="dailyPrice"
             placeholder="Price"
             onChange={this.handleChange}
-          /> euros
+          />{' '}
+          euros
           <h2>Description</h2>
           <label htmlFor="description">Describe your Vehicle</label>
-          <textarea
-            name="description"
-            id="description"
-            placeholder="Write here..."
-            onChange={this.handleChange}
-          />
-          <br/><br/>
+          <textarea name="description" id="description" placeholder="Write here..." onChange={this.handleChange} />
+          <br />
+          <br />
           <input type="submit" value="Publish" />
         </form>
       </div>

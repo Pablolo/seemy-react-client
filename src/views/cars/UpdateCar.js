@@ -24,7 +24,7 @@ class UpdateCar extends Component {
     const carId = this.props.match.params.id;
     if (this.props.user !== null) {
       this.setState({
-        personLoggedIn: this.props.user.data._id
+        personLoggedIn: this.props.user._id
       })
     }
     apiClient

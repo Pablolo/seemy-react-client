@@ -68,17 +68,17 @@ class Signup extends Component {
     const { error } = this.props;
     return (
       <div className="signup-page">
-        <div className="form-wrapper">
+        <div className="signup-form-wrapper">
           <h1>Let&apos;s get Started</h1>
           <form className="signup-form" onSubmit={this.handleSubmit}>
             <div className="first-lastName-wrapper">
               <div className="firstName-wrapper">
-                <label htmlFor="firstName">First Name</label>
+                <label className="signup-form-label" htmlFor="firstName">First Name</label>
                 <input
+                  className="signup-input"
                   type="text"
                   name="firstName"
                   id="firstName"
-                  placeholder="First Name"
                   value={firstName}
                   onChange={this.handleChange}
                   noValidate
@@ -87,12 +87,12 @@ class Signup extends Component {
                 {errors.firstName.length > 0 && <span className="signup-error">{errors.firstName}</span>}
               </div>
               <div className="lastName-wrapper">
-                <label htmlFor="lastName">Last Name</label>
+                <label className="signup-form-label" htmlFor="lastName">Last Name</label>
                 <input
+                  className="signup-input"
                   type="text"
                   name="lastName"
                   id="lastName"
-                  placeholder="Last Name"
                   value={lastName}
                   onChange={this.handleChange}
                   noValidate
@@ -101,13 +101,13 @@ class Signup extends Component {
                 {errors.lastName.length > 0 && <span className="signup-error">{errors.lastName}</span>}
               </div>
             </div>
-            <p>Enter your name as it appears on your drivers license</p>
-            <label htmlFor="email">Email</label>
+            <p className="name-as-appears-msg">Enter your name as it appears on your drivers license</p>
+            <label className="signup-form-label" htmlFor="email">Email</label>
             <input
+              className="signup-input"
               type="email"
               name="email"
               id="email"
-              placeholder="Your Email"
               value={email}
               onChange={this.handleChange}
               noValidate
@@ -115,12 +115,12 @@ class Signup extends Component {
             />
             {errors.email.length > 0 && <span className="signup-error">{errors.email}</span>}
             {errors.email.length === 0 && email !== '' && <span className="signup-valid">Your Email is correct</span>}
-            <label htmlFor="password">Password</label>
+            <label className="signup-form-label" htmlFor="password">Password</label>
             <input
+              className="signup-input"
               type="password"
               name="password"
               id="password"
-              placeholder="Must be at least 8 characters in length"
               value={password}
               onChange={this.handleChange}
               minLength="8"
@@ -131,7 +131,7 @@ class Signup extends Component {
             {errors.password.length === 0 && password !== '' && (
               <span className="signup-valid">Your Password is correct</span>
             )}
-            <p>*All fields are required</p>
+            <p className="allfields-required-msg">*All fields are required</p>
             {error && (
               <div>
                 {error}. Do you want to <Link to={'/login'}>Log In</Link> instead?

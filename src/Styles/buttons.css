@@ -14,9 +14,25 @@
 }
 
 .signup-btn {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   min-width: 100%;
   cursor: pointer;
-  padding: 	0.9em;
+  padding: 	1em;
+  border: none;
+  border-radius: 1px;
+  background-color: #22223B;
+  color: #fefefe;
+}
+
+.login-btn {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 100%;
+  cursor: pointer;
+  padding: 	1em;
   border: none;
   border-radius: 1px;
   background-color: #22223B;
@@ -24,8 +40,11 @@
 }
 
 .signup-login-btn {
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  padding: 	0.5em;
-  border-radius: 3px solid #22223B;
+  padding: 	0.5em 1em;
+  margin-top: 0.3rem;
   background-color: white;
+  border: 1px solid black;
 }

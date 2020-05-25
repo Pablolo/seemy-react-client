@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { withAuth } from '../context/authContext';
@@ -11,40 +11,50 @@ class Navbar extends Component {
     const { isLoggedIn, user } = this.props;
     return (
       <nav className="navbar">
-        <Link to="/" className="seemy-logo">
+        <NavLink to="/" className="seemy-logo">
           seemy
-        </Link>
+        </NavLink>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon"></span>
         </label>
         <ul className="menu">
           <li>
-            <Link to={'/cars'}>Cars</Link>
+            <NavLink to={'/cars'} className="navlink">
+              Cars
+            </NavLink>
           </li>
           <li>
-            <Link to={'/learn-more'}>Learn More</Link>
+            <NavLink to={'/learn-more'} className="navlink">
+              Learn More
+            </NavLink>
           </li>
 
           {!isLoggedIn && (
             <li>
-              <Link to={'/signup'}>Sign Up</Link>
+              <NavLink to={'/signup'} className="navlink">
+                Sign Up
+              </NavLink>
             </li>
           )}
           {!isLoggedIn && (
             <li>
-              <Link to={'/login'}>Log In</Link>
+              <NavLink to={'/login'} className="navlink">
+                Log In
+              </NavLink>
             </li>
           )}
           {isLoggedIn && (
             <li>
-              <Link to={`/driver/${user._id}`}>Your Profile</Link>
+              <NavLink to={`/driver/${user._id}`} className="navlink">
+                Your Profile
+              </NavLink>
             </li>
           )}
           <li>
-            <Link to={'/cars/add'}>
+            <NavLink to={'/cars/add'} className="navlink">
               <button>List Your Car</button>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

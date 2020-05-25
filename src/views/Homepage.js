@@ -6,6 +6,8 @@ import Error from '../components/Error';
 
 import apiClient from '../services/apiClient';
 
+import './Homepage.css';
+
 const STATUS = {
   LOADING: 'LOADING',
   LOADED: 'LOADED',
@@ -52,7 +54,7 @@ class Homepage extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div>
+          <div className="homepage">
             <h1>Homepage</h1>
             {this.listCars()}
           </div>

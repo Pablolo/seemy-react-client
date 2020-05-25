@@ -1,5 +1,3 @@
-
-
 /* Navbar */
 
 .navbar {
@@ -18,14 +16,15 @@
   background-color: #fff;
 }
 
-.navbar li link {
+.navlink {
+  background-color: yellowgreen;
   display: block;
   padding: 20px 20px;
   border-right: 1px solid #f4f4f4;
   text-decoration: none;
 }
 
-.navbar li link:hover,
+.navlink:hover,
 .navbar .menu-btn:hover {
   background-color: #f4f4f4;
 }
@@ -58,6 +57,7 @@
   padding: 28px 20px;
   position: relative;
   user-select: none;
+  background-color: yellow;
 }
 
 .navbar .menu-icon .navicon {

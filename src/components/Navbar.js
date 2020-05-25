@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withAuth } from '../context/authContext';
 
 import '../Styles/components/Navbar.css';
+import '../Styles/buttons.css';
 
 class Navbar extends Component {
   render() {
@@ -53,7 +54,7 @@ class Navbar extends Component {
           )}
           <li>
             <NavLink to={'/cars/add'} className="navlink">
-              <button>List Your Car</button>
+              <button className="nav-btn">List Your Car</button>
             </NavLink>
           </li>
         </ul>

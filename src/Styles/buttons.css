@@ -1,0 +1,31 @@
+.nav-btn {
+  min-width: 100%;
+  cursor: pointer;
+  padding: 	0.7em;
+  border: none;
+  border-radius: 1px;
+  background-color: #22223B;
+  color: #fefefe;
+}
+
+.nav-btn:hover {
+  background-color: #4A4E69;
+  color: #fefefe;
+}
+
+.signup-btn {
+  min-width: 100%;
+  cursor: pointer;
+  padding: 	0.9em;
+  border: none;
+  border-radius: 1px;
+  background-color: #22223B;
+  color: #fefefe;
+}
+
+.signup-login-btn {
+  cursor: pointer;
+  padding: 	0.5em;
+  border-radius: 3px solid #22223B;
+  background-color: white;
+}

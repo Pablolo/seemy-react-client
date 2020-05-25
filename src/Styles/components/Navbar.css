@@ -17,7 +17,7 @@
 }
 
 .navlink {
-  background-color: yellowgreen;
+  color: black;
   display: block;
   padding: 20px 20px;
   border-right: 1px solid #f4f4f4;
@@ -34,8 +34,8 @@
   float: left;
   font-family: 'Exo', sans-serif;
   font-weight: 700;
-  font-size: 2rem;
-  padding: 10px 20px;
+  font-size: 1.8rem;
+  padding: 12px 20px;
   text-decoration: none;
   color: black;
 } 
@@ -95,7 +95,7 @@
 }
 
 .navbar .menu-btn:checked ~ .menu {
-  max-height: 240px;
+  max-height: 340px;
 }
 
 .navbar .menu-btn:checked ~ .menu-icon .navicon {

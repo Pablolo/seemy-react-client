@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withAuth } from '../../context/authContext';
 
+import './Signup.css';
+
 const validEmailRegex =
   // eslint-disable-next-line
   RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
@@ -65,83 +67,85 @@ class Signup extends Component {
     const { firstName, lastName, email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div>
-        <h1>Let&apos;s get Started</h1>
-        <h2>Create your Account*</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="firstName">First Name</label>
-          <br></br>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            placeholder="First Name as appears on your driver's license"
-            value={firstName}
-            onChange={this.handleChange}
-            noValidate
-            required
-          />
-          {errors.firstName.length > 0 && <span className="signup-error">{errors.firstName}</span>}
-          <br></br>
-          <label htmlFor="lastName">Last Name</label>
-          <br></br>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            placeholder="Last Name as appears on your driver's license"
-            value={lastName}
-            onChange={this.handleChange}
-            noValidate
-            required
-          />
-          {errors.lastName.length > 0 && <span className="signup-error">{errors.lastName}</span>}
-          <br></br>
-          <label htmlFor="email">Email</label>
-          <br></br>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={this.handleChange}
-            noValidate
-            required
-          />
-          {errors.email.length > 0 && <span className="signup-error">{errors.email}</span>}
-          {errors.email.length === 0 && email !== '' && <span className="signup-valid">Your Email is correct</span>}
-          <br></br>
-          <label htmlFor="password">Password</label>
-          <br></br>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Must be at least 8 characters in length. White spaces are not allowed"
-            value={password}
-            onChange={this.handleChange}
-            minLength="8"
-            noValidate
-            required
-          />
-          {errors.password.length > 0 && <span className="signup-error">{errors.password}</span>}
-          {errors.password.length === 0 && password !== '' && (
-            <span className="signup-valid">Your Password is correct</span>
-          )}
-          <br></br>
-          <p>*All fields are required</p>
-          {error && (
-            <div>
-              {error}. Do you want to <Link to={'/login'}>Log In</Link> instead?
+      <div className="signup-page">
+        <div className="form-wrapper">
+          <h1>Let&apos;s get Started</h1>
+          <form className="signup-form" onSubmit={this.handleSubmit}>
+            <div className="first-lastName-wrapper">
+              <div className="firstName-wrapper">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={this.handleChange}
+                  noValidate
+                  required
+                />
+                {errors.firstName.length > 0 && <span className="signup-error">{errors.firstName}</span>}
+              </div>
+              <div className="lastName-wrapper">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={this.handleChange}
+                  noValidate
+                  required
+                />
+                {errors.lastName.length > 0 && <span className="signup-error">{errors.lastName}</span>}
+              </div>
             </div>
-          )}
-          <input type="submit" value="Create Account" />
-        </form>
-        <p>Already have an account?</p>
-        <Link to={'/login'}>
-          <button>Log In</button>
-        </Link>
+            <p>Enter your name as it appears on your drivers license</p>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={this.handleChange}
+              noValidate
+              required
+            />
+            {errors.email.length > 0 && <span className="signup-error">{errors.email}</span>}
+            {errors.email.length === 0 && email !== '' && <span className="signup-valid">Your Email is correct</span>}
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Must be at least 8 characters in length"
+              value={password}
+              onChange={this.handleChange}
+              minLength="8"
+              noValidate
+              required
+            />
+            {errors.password.length > 0 && <span className="signup-error">{errors.password}</span>}
+            {errors.password.length === 0 && password !== '' && (
+              <span className="signup-valid">Your Password is correct</span>
+            )}
+            <p>*All fields are required</p>
+            {error && (
+              <div>
+                {error}. Do you want to <Link to={'/login'}>Log In</Link> instead?
+              </div>
+            )}
+            <input className="signup-btn" type="submit" value="Create Account" />
+          </form>
+          <div className="already-account-wrapper">
+            <p>Already have an account?</p>
+            <Link to={'/login'}>
+              <button className="signup-login-btn">Log In</button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

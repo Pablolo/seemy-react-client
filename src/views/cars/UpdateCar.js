@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { withAuth } from '../../context/authContext';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 import apiClient from '../../services/apiClient';
 
@@ -92,7 +95,7 @@ class UpdateCar extends Component {
     const carId = this.props.match.params.id;
     switch (status) {
       case STATUS.LOADING:
-        return <div>Loading...</div>;
+        return <Loading />;
       case STATUS.LOADED:
         return (
           <div>
@@ -231,10 +234,15 @@ class UpdateCar extends Component {
           </div>
         );
       case STATUS.ERROR:
-        return <div>{error}</div>;
+        return <Error error={error} />;
       // no default
     }
   }
 }
+
+UpdateCar.propTypes = {
+  match: PropTypes.object,
+  user: PropTypes.object,
+};
 
 export default withAuth(UpdateCar);

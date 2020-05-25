@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import LeanCarDetail from '../components/LeanCarDetail';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 import apiClient from '../services/apiClient';
 
@@ -44,11 +46,10 @@ class Homepage extends Component {
   };
 
   render() {
-    // console.log('homepage props', this.props)
     const { status, error } = this.state;
     switch (status) {
       case STATUS.LOADING:
-        return <div>Loading...</div>;
+        return <Loading />;
       case STATUS.LOADED:
         return (
           <div>
@@ -57,7 +58,7 @@ class Homepage extends Component {
           </div>
         );
       case STATUS.ERROR:
-        return <div>{error}</div>;
+        return <Error error={error} />;
       // no default
     }
   }

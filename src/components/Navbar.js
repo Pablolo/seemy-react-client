@@ -10,20 +10,43 @@ class Navbar extends Component {
   render() {
     const { isLoggedIn, user } = this.props;
     return (
-      <nav>
+      <nav className="navbar">
         <Link to="/" className="seemy-logo">
           seemy
         </Link>
-        <div>
-          <Link to={'/cars'}>Cars</Link>
-          <Link to={'/learn-more'}>Learn More</Link>
-          {!isLoggedIn && <Link to={'/signup'}>Sign Up</Link>}
-          {!isLoggedIn && <Link to={'/login'}>Log In</Link>}
-          {isLoggedIn && <Link to={`/driver/${user._id}`}>Your Profile</Link>}
-          <Link to={'/cars/add'}>
-            <button>List Your Car</button>
-          </Link>
-        </div>
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="navicon"></span>
+        </label>
+        <ul className="menu">
+          <li>
+            <Link to={'/cars'}>Cars</Link>
+          </li>
+          <li>
+            <Link to={'/learn-more'}>Learn More</Link>
+          </li>
+
+          {!isLoggedIn && (
+            <li>
+              <Link to={'/signup'}>Sign Up</Link>
+            </li>
+          )}
+          {!isLoggedIn && (
+            <li>
+              <Link to={'/login'}>Log In</Link>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <Link to={`/driver/${user._id}`}>Your Profile</Link>
+            </li>
+          )}
+          <li>
+            <Link to={'/cars/add'}>
+              <button>List Your Car</button>
+            </Link>
+          </li>
+        </ul>
       </nav>
     );
   }

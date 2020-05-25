@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { withAuth } from '../../context/authContext';
 import apiClient from '../../services/apiClient';
 
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 import LeanCarDetail from '../../components/LeanCarDetail';
 
 const STATUS = {
@@ -97,7 +100,7 @@ class DriverProfile extends Component {
     const { status, error, cars, user, match } = this.state;
     switch (status) {
       case STATUS.LOADING:
-        return <div>Loading...</div>;
+        return <Loading />;
       case STATUS.LOADED:
         return (
           <div>
@@ -123,7 +126,7 @@ class DriverProfile extends Component {
             )}
             {!match && cars && (
               <div>
-                <h2>{user.firstName}'s Published Cars</h2>
+                <h2>{user.firstName}&apos;s Published Cars</h2>
                 <p>Click on each car to see its details or book it!</p>
               </div>
             )}
@@ -131,10 +134,15 @@ class DriverProfile extends Component {
           </div>
         );
       case STATUS.ERROR:
-        return <div>{error}</div>;
+        return <Error error={error} />;
       // no default
     }
   }
 }
+
+DriverProfile.propTypes = {
+  match: PropTypes.object,
+  user: PropTypes.object,
+};
 
 export default withAuth(DriverProfile);

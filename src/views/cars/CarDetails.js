@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CarDetail from '../../components/CarDetail';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 import apiClient from '../../services/apiClient';
 
@@ -38,7 +41,7 @@ class CarDetails extends Component {
     const { status, error, car } = this.state;
     switch (status) {
       case STATUS.LOADING:
-        return <div>Loading...</div>;
+        return <Loading />;
       case STATUS.LOADED:
         return (
           <div>
@@ -47,10 +50,14 @@ class CarDetails extends Component {
           </div>
         );
       case STATUS.ERROR:
-        return <div>{error}</div>;
+        return <Error error={error} />;
       // no default
     }
   }
 }
+
+CarDetails.propTypes = {
+  match: PropTypes.object,
+};
 
 export default CarDetails;

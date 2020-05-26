@@ -1,10 +1,10 @@
-.homepage {
+.cardetails-page {
   width: 100%;
   margin-top: 5rem;
   position: absolute;
 }
 
-.homepage-h1 {
+.cardetails-h1 {
   text-align: center;
   font-family: 'Sura', serif;
 }

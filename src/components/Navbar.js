@@ -29,60 +29,52 @@ class Navbar extends Component {
     const { isLoggedIn, user } = this.props;
     const { showMenu } = this.state;
     return (
-      <nav className="navbar">
-        <NavLink to="/" className="seemy-logo">
-          seemy
-        </NavLink>
-        <div>
+      <div>
+        <nav className="navbar">
+          <NavLink to="/" className="seemy-logo">
+            seemy
+          </NavLink>
           <img
             className="show-menu-img"
             onClick={this.showMenu}
             src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/user.png`}
             alt=""
           />
-          {showMenu && (
-            <ul className="menu">
-              <li>
-                <NavLink to={'/cars'} className="navlink">
-                  Cars
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={'/learn-more'} className="navlink">
-                  Learn More
-                </NavLink>
-              </li>
+        </nav>
+        {showMenu && (
+          <ul className="menu">
+            {!isLoggedIn && (
+              <NavLink to={'/signup'} className="navlink">
+                <li>Sign Up</li>
+              </NavLink>
+            )}
+            {!isLoggedIn && (
+              <NavLink to={'/login'} className="navlink">
+                <li className="login-navlink">Log In</li>
+              </NavLink>
+            )}
+            {isLoggedIn && (
+              <NavLink to={`/driver/${user._id}`} className="navlink">
+                <li>Your Profile</li>
+              </NavLink>
+            )}
 
-              {!isLoggedIn && (
-                <li>
-                  <NavLink to={'/signup'} className="navlink">
-                    Sign Up
-                  </NavLink>
-                </li>
-              )}
-              {!isLoggedIn && (
-                <li>
-                  <NavLink to={'/login'} className="navlink">
-                    Log In
-                  </NavLink>
-                </li>
-              )}
-              {isLoggedIn && (
-                <li>
-                  <NavLink to={`/driver/${user._id}`} className="navlink">
-                    Your Profile
-                  </NavLink>
-                </li>
-              )}
-              <li>
-                <NavLink to={'/cars/add'} className="navlink">
-                  <button className="nav-btn">List Your Car</button>
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </div>
-      </nav>
+            <NavLink to={'/cars'} className="navlink">
+              <li>Cars</li>
+            </NavLink>
+
+            <NavLink to={'/learn-more'} className="navlink">
+              <li>Learn More</li>
+            </NavLink>
+
+            <li>
+              <NavLink to={'/cars/add'} className="navlink">
+                <button className="nav-btn">List Your Car</button>
+              </NavLink>
+            </li>
+          </ul>
+        )}
+      </div>
     );
   }
 }

@@ -1,0 +1,11 @@
+.searchBar-wrapper {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.searchBar {
+  background-image: url("/public/magnifying-glass.png") top left no-repeat;
+  padding: 0.6rem 3rem;
+  border-radius: 4px;
+  border: 1px solid gray;
+}

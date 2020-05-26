@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../Styles/components/SearchBar.css';
+
 class SearchBar extends Component {
   search = e => {
     this.props.searchQuery(e);
@@ -7,8 +9,8 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <input placeholder={'Search here...'} type="text" onChange={this.search} />
+      <div className="searchBar-wrapper">
+        <input className="searchBar" placeholder={'Search here...'} type="text" onChange={this.search} />
         <br />
       </div>
     );

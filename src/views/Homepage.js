@@ -55,7 +55,7 @@ class Homepage extends Component {
       case STATUS.LOADED:
         return (
           <div className="homepage">
-            <h1>Homepage</h1>
+            <h1 className="homepage-h1">Cars Available Today</h1>
             {this.listCars()}
           </div>
         );

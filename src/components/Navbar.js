@@ -27,8 +27,8 @@ class Navbar extends Component {
     const { isLoggedIn, user } = this.props;
     const { showMenu } = this.state;
     return (
-      <div>
-        <nav className="w-screen fixed z-40 px-8 py-4 flex justify-between bg-white shadow-xl">
+      <div className="fixed z-40">
+        <nav className="w-screen px-8 py-4 flex justify-between bg-white shadow-xl">
           <NavLink to="/" className="font-bold text-3xl">
             seemy
           </NavLink>
@@ -40,7 +40,7 @@ class Navbar extends Component {
           />
         </nav>
         {showMenu && (
-          <ul className="bg-white rounded-sm shadow-2xl z-40 absolute right-0 mt-20 mr-1">
+          <ul className="bg-white rounded-sm shadow-2xl z-40 absolute right-0 mr-1">
             {!isLoggedIn && <NavBarLink to={'/signup'} name={'Sign Up'} />}
             {!isLoggedIn && <NavBarLink to={'/login'} name={'Log In'} addcss={'border-b-2'} />}
             {isLoggedIn && <NavBarLink to={`/driver/${user._id}`} name={'Your Profile'} />}

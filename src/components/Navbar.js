@@ -28,7 +28,7 @@ class Navbar extends Component {
     const { showMenu } = this.state;
     return (
       <div className="fixed z-40">
-        <nav className="w-screen px-8 py-4 flex justify-between bg-white shadow-xl">
+        <nav className="w-screen px-8 py-4 flex justify-between bg-white shadow-lg">
           <NavLink to="/" className="font-bold text-3xl">
             seemy
           </NavLink>

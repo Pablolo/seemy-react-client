@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../Styles/components/SearchBar.css';
-
 class SearchBar extends Component {
   search = e => {
     this.props.searchQuery(e);
@@ -9,9 +7,16 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="searchBar-wrapper">
-        <img className="search-icon" src={process.env.REACT_APP_BACKEND_URI + '/images/misc/magnifying-glass.png'} />
-        <input className="searchBar" placeholder={'Search here...'} type="text" onChange={this.search} />
+      <div className="bg-white p-4 flex justify-center items-center">
+        <span className="w-auto flex justify-end items-center text-gray-500 p-2">
+          <i className="material-icons text-3xl">search</i>
+        </span>
+        <input
+          className="my-8 px-12 py-2 border-2 border-gray-600 rounded"
+          placeholder={'Try to search Ferrari...'}
+          type="text"
+          onChange={this.search}
+        />
       </div>
     );
   }

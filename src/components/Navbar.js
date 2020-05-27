@@ -30,15 +30,15 @@ class Navbar extends Component {
     const { showMenu } = this.state;
     return (
       <div>
-        <nav className="navbar">
-          <NavLink to="/" className="seemy-logo">
+        <nav className="w-screen fixed z-40 px-8 py-4 flex justify-between bg-white shadow-xl">
+          <NavLink to="/" className="font-bold text-3xl">
             seemy
           </NavLink>
           <img
-            className="show-menu-img"
+            className="h-8 w-auto cursor-pointer mt-2"
             onClick={this.showMenu}
             src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/user.png`}
-            alt=""
+            alt="seemy-menu-icon"
           />
         </nav>
         {showMenu && (
@@ -78,6 +78,78 @@ class Navbar extends Component {
     );
   }
 }
+
+// class Navbar extends Component {
+//   state = {
+//     showMenu: false,
+//   };
+
+//   showMenu = e => {
+//     e.preventDefault();
+//     this.setState({ showMenu: !this.state.showMenu }, () => {
+//       document.addEventListener('click', this.closeMenu);
+//     });
+//   };
+
+//   closeMenu = () => {
+//     this.setState({ showMenu: false }, () => {
+//       document.removeEventListener('click', this.closeMenu);
+//     });
+//   };
+
+//   render() {
+//     const { isLoggedIn, user } = this.props;
+//     const { showMenu } = this.state;
+//     return (
+//       <div>
+//         <nav className="navbar">
+//           <NavLink to="/" className="seemy-logo">
+//             seemy
+//           </NavLink>
+//           <img
+//             className="show-menu-img"
+//             onClick={this.showMenu}
+//             src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/user.png`}
+//             alt=""
+//           />
+//         </nav>
+//         {showMenu && (
+//           <ul className="menu">
+//             {!isLoggedIn && (
+//               <NavLink to={'/signup'} className="navlink">
+//                 <li>Sign Up</li>
+//               </NavLink>
+//             )}
+//             {!isLoggedIn && (
+//               <NavLink to={'/login'} className="navlink">
+//                 <li className="login-navlink">Log In</li>
+//               </NavLink>
+//             )}
+//             {isLoggedIn && (
+//               <NavLink to={`/driver/${user._id}`} className="navlink">
+//                 <li>Your Profile</li>
+//               </NavLink>
+//             )}
+
+//             <NavLink to={'/cars'} className="navlink">
+//               <li>Cars</li>
+//             </NavLink>
+
+//             <NavLink to={'/learn-more'} className="navlink">
+//               <li>Learn More</li>
+//             </NavLink>
+
+//             <li>
+//               <NavLink to={'/cars/add'} className="navlink">
+//                 <button className="nav-btn">List Your Car</button>
+//               </NavLink>
+//             </li>
+//           </ul>
+//         )}
+//       </div>
+//     );
+//   }
+// }
 
 Navbar.propTypes = {
   isLoggedIn: PropTypes.bool,

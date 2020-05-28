@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withAuth } from '../../context/authContext';
 
-import './Login.css';
+// import './Login.css';
 
 class Login extends Component {
   state = {
@@ -59,13 +59,15 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="login-page">
-        <div className="login-form-wrapper">
-          <h1>Welcome Back</h1>
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            <label className="login-form-label" htmlFor="email">Your Email</label>
+      <div className="absolute mt-24 w-screen text-center">
+        <div className="w-5/6 my-0 mx-auto border border-gray-400">
+          <h1 className="text-2xl font-bold text-center my-8">Welcome Back</h1>
+          <form className="flex flex-col" onSubmit={this.handleSubmit}>
+            <label className="" htmlFor="email">
+              Your Email
+            </label>
             <input
-              className="login-form-input"
+              className="border border-gray-700 w-2/4 my-0 mx-auto"
               type="email"
               name="email"
               id="email"
@@ -73,23 +75,25 @@ class Login extends Component {
               onChange={this.handleChange}
             />
             {errors.email && <div className="signup-error">Email field cannot be empty</div>}
-            <label className="login-form-label" htmlFor="password">Password</label>
+            <label className="" htmlFor="password">
+              Password
+            </label>
             <input
-              className="login-form-input"
+              className="border border-gray-700 w-2/4 my-0 mx-auto"
               type="password"
               name="password"
               id="password"
               value={password}
               onChange={this.handleChange}
             />
-            {errors.password && <div className="signup-error">Password cannot be empty</div>}
-            {error && <div className="signup-error">{error}</div>}
-            <input className="login-btn" type="submit" value="Log In" />
+            {errors.password && <div className="">Password cannot be empty</div>}
+            {error && <div className="">{error}</div>}
+            <input className="" type="submit" value="Log In" />
           </form>
-          <div className="already-account-wrapper">
+          <div className="">
             <p>Don&apos;t have an account?</p>
             <Link to={'/signup'}>
-              <button className="signup-login-btn">Sign Up</button>
+              <button className="">Sign Up</button>
             </Link>
           </div>
         </div>

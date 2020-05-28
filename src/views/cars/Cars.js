@@ -7,8 +7,6 @@ import Error from '../../components/Error';
 
 import apiClient from '../../services/apiClient';
 
-import './Cars.css';
-
 const STATUS = {
   LOADING: 'LOADING',
   LOADED: 'LOADED',
@@ -73,9 +71,9 @@ class Cars extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div className="cars-page">
+          <div className="absolute mt-24">
             <SearchBar searchQuery={this.search} />
-            <h1 className="cars-h1">Cars Available</h1>
+            <h1 className="text-2xl font-bold text-center mt-2 mb-8">Cars Available</h1>
             {this.searchFilterRendering()}
           </div>
         );

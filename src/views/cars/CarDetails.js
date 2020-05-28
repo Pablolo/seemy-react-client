@@ -6,8 +6,6 @@ import Error from '../../components/Error';
 
 import apiClient from '../../services/apiClient';
 
-import './CarDetails.css';
-
 const STATUS = {
   LOADING: 'LOADING',
   LOADED: 'LOADED',
@@ -46,8 +44,8 @@ class CarDetails extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div className="cardetails-page">
-            <h1 className="cardetails-h1">Each Car Detail</h1>
+          <div className="absolute mt-24">
+            <h1 className="text-2xl font-bold text-center my-8">Each Car Detail</h1>
             <CarDetail car={car} />
           </div>
         );

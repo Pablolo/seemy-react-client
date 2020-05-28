@@ -45,7 +45,6 @@ class CarDetails extends Component {
       case STATUS.LOADED:
         return (
           <div className="absolute mt-24">
-            <h1 className="text-2xl font-bold text-center my-8">Each Car Detail</h1>
             <CarDetail car={car} />
           </div>
         );

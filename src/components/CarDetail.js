@@ -4,28 +4,40 @@ import PropTypes from 'prop-types';
 import BookingForm from './BookingForm';
 
 class CarDetails extends Component {
+  transmissionUpperCase = () => {
+    const { car } = this.props;
+    return car.transmission.charAt(0).toUpperCase() + car.transmission.slice(1);
+  };
+
   render() {
     const { car } = this.props;
     return (
       <div>
-        <img src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.make + car.model}/>
-        <p>
+        <img
+          className="w-11/12 mx-auto rounded"
+          src={process.env.REACT_APP_BACKEND_URI + car.image}
+          alt={car.make + car.model}
+        />
+        <p className="mt-2 mb-8 mx-auto font-bold text-3xl ml-6">
           {car.make} {car.model}
         </p>
-        <div>
-          <p>Year {car.year}</p>
-          <p>{car.transmission} Transmission</p>
+        <div className="border border-black mx-6 flex justify-between py-4 px-8">
+          <p className="font-bold">Year {car.year}</p>
+          <p className="font-bold">{this.transmissionUpperCase()} Transmission</p>
         </div>
-        <div>
-          <p>{car.dailyPrice}€/day</p>
+        <div className="text-center border border-black mx-6 my-8 flex-col justify-between py-4 px-8">
+          <p className="text-2xl">
+            <b className="font-extrabold text-3xl">{car.dailyPrice}€</b>/day
+          </p>
           <BookingForm />
         </div>
-        <p>Hosted by</p>
-        <div>
-          <img src={process.env.REACT_APP_BACKEND_URI + '/images/misc/default-avatar.png'} alt="" />
-          <Link to={`/driver/${car.owner}`}>View Owner Profile</Link>
-        </div>
-        <p>{car.description}</p>
+        <p className="mx-auto text-lg font-bold ml-6">Hosted by</p>
+        <Link className="flex ml-6 my-6" to={`/driver/${car.owner}`}>
+          <img className="ml-8" src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/default-avatar.png`} alt="" />
+          <p className="ml-8 font-bold text-lg py-4">Pablo Olóndriz</p>
+        </Link>
+        <p className="mx-auto text-lg font-bold ml-6 mb-4">Description</p>
+        <p className="border border-black mx-6 flex justify-between py-4 px-8 mb-12">{car.description}</p>
       </div>
     );
   }

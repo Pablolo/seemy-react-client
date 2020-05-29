@@ -70,11 +70,11 @@ class DriverProfile extends Component {
     if (Array.isArray(cars)) {
       return cars.map((car, index) => {
         return (
-          <div key={index}>
+          <div className="bg-gray-100 w-5/6 my-6 mx-auto border border-gray-400 rounded text-center py-6" key={index}>
             <LeanCarDetail car={car} />
             {match && (
               <Link to={`/cars/${car._id}/update`}>
-                <button>Update Car Details</button>
+                <button className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded w-1/2 cursor-pointer">Update Car Details</button>
               </Link>
             )}
           </div>
@@ -103,31 +103,43 @@ class DriverProfile extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div>
-            <h1>Driver Profile</h1>
-            <div>
-              <img src={process.env.REACT_APP_BACKEND_URI + user.profilePhoto} alt={user.firstName} />
-              <p>
+          <div className="absolute mt-24">
+            <div className="bg-gray-100 w-5/6 my-6 mx-auto border border-gray-400 rounded text-center">
+              <img
+                className="h-auto w-2/5 rounded-full mx-auto mt-6"
+                src={process.env.REACT_APP_BACKEND_URI + user.profilePhoto}
+                alt={user.firstName}
+              />
+              <p className="text-2xl font-bold text-center mt-2 mb-2">
                 {user.firstName} {user.lastName}
               </p>
-              {match && <p>{user.email}</p>}
+              {match && <p className="text-lg text-center mb-2">{user.email}</p>}
+              {match && (
+                <button
+                  className="bg-purple-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mt-4 mb-8 cursor-pointer"
+                  onClick={onLogout}
+                >
+                  Logout
+                </button>
+              )}
             </div>
-            {match && <button onClick={onLogout}>Logout</button>}
             {match && !cars && (
               <Link to={'/cars/add'}>
                 <button>List Your Car</button>
               </Link>
             )}
             {match && cars && (
-              <div>
-                <h2>Your Published Cars</h2>
-                <p>Click on each car to see your publication or click on the button to edit</p>
+              <div className="text-centerflex flex-col">
+                <h2 className="text-2xl font-bold text-center mt-2 mb-8">Your Published Cars</h2>
+                <p className="mb-8 px-20 text-center">
+                  Click on each car to see your publication or click on the button to edit
+                </p>
               </div>
             )}
             {!match && cars && (
               <div>
-                <h2>{user.firstName}&apos;s Published Cars</h2>
-                <p>Click on each car to see its details or book it!</p>
+                <h2 className="text-2xl font-bold text-center mt-2 mb-8">{user.firstName}&apos;s Published Cars</h2>
+                <p className="mb-8 px-20 text-center">Click on each car to see its details or book it!</p>
               </div>
             )}
             <div>{this.showUserCars()}</div>

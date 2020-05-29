@@ -26,7 +26,7 @@ class CarDetails extends Component {
           <p className="font-bold">{this.transmissionUpperCase()} Transmission</p>
         </div>
         <div className="text-center border border-black mx-6 my-8 flex-col justify-between py-4 px-8">
-          <p className="text-2xl">
+          <p className="text-2xl text-left ml-2">
             <b className="font-extrabold text-3xl">{car.dailyPrice}€</b>/day
           </p>
           <BookingForm />

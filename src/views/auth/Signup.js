@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withAuth } from '../../context/authContext';
 
-import './Signup.css';
-
 const validEmailRegex =
   // eslint-disable-next-line
   RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
@@ -67,15 +65,17 @@ class Signup extends Component {
     const { firstName, lastName, email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="signup-page">
-        <div className="signup-form-wrapper">
-          <h1>Let&apos;s get Started</h1>
-          <form className="signup-form" onSubmit={this.handleSubmit}>
-            <div className="first-lastName-wrapper">
-              <div className="firstName-wrapper">
-                <label className="signup-form-label" htmlFor="firstName">First Name</label>
+      <div className="absolute mt-24 w-screen text-center">
+        <div className="w-5/6 my-6 mx-auto border border-gray-400 rounded">
+          <h1 className="text-2xl font-bold text-center my-8">Let&apos;s get Started</h1>
+          <form className="flex flex-col items-center" onSubmit={this.handleSubmit}>
+            <div className="flex flex-row w-2/3">
+              <div className="flex flex-col w-2/4">
+                <label className="w-full my-0 mx-auto text-left" htmlFor="firstName">
+                  First Name
+                </label>
                 <input
-                  className="signup-input"
+                  className="border border-gray-700 w-11/12 rounded-sm"
                   type="text"
                   name="firstName"
                   id="firstName"
@@ -84,12 +84,14 @@ class Signup extends Component {
                   noValidate
                   required
                 />
-                {errors.firstName.length > 0 && <span className="signup-error">{errors.firstName}</span>}
+                {errors.firstName.length > 0 && <span className="">{errors.firstName}</span>}
               </div>
-              <div className="lastName-wrapper">
-                <label className="signup-form-label" htmlFor="lastName">Last Name</label>
+              <div className="flex flex-col w-2/4">
+                <label className="w-full my-0 mx-auto text-left" htmlFor="lastName">
+                  Last Name
+                </label>
                 <input
-                  className="signup-input"
+                  className="border border-gray-700 w-full rounded-sm"
                   type="text"
                   name="lastName"
                   id="lastName"
@@ -98,13 +100,15 @@ class Signup extends Component {
                   noValidate
                   required
                 />
-                {errors.lastName.length > 0 && <span className="signup-error">{errors.lastName}</span>}
+                {errors.lastName.length > 0 && <span className="">{errors.lastName}</span>}
               </div>
             </div>
-            <p className="name-as-appears-msg">Enter your name as it appears on your drivers license</p>
-            <label className="signup-form-label" htmlFor="email">Email</label>
+            <p className="text-xs mb-2">Enter your name as it appears on your drivers license</p>
+            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="email">
+              Email
+            </label>
             <input
-              className="signup-input"
+              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
               type="email"
               name="email"
               id="email"
@@ -113,11 +117,13 @@ class Signup extends Component {
               noValidate
               required
             />
-            {errors.email.length > 0 && <span className="signup-error">{errors.email}</span>}
-            {errors.email.length === 0 && email !== '' && <span className="signup-valid">Your Email is correct</span>}
-            <label className="signup-form-label" htmlFor="password">Password</label>
+            {errors.email.length > 0 && <span className="">{errors.email}</span>}
+            {errors.email.length === 0 && email !== '' && <span className="">Your Email is correct</span>}
+            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="password">
+              Password
+            </label>
             <input
-              className="signup-input"
+              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
               type="password"
               name="password"
               id="password"
@@ -127,22 +133,24 @@ class Signup extends Component {
               noValidate
               required
             />
-            {errors.password.length > 0 && <span className="signup-error">{errors.password}</span>}
-            {errors.password.length === 0 && password !== '' && (
-              <span className="signup-valid">Your Password is correct</span>
-            )}
-            <p className="allfields-required-msg">*All fields are required</p>
+            {errors.password.length > 0 && <span className="">{errors.password}</span>}
+            {errors.password.length === 0 && password !== '' && <span className="">Your Password is correct</span>}
+            <p className="text-sm text-gray-700 mt-4">*All fields are required</p>
             {error && (
               <div>
                 {error}. Do you want to <Link to={'/login'}>Log In</Link> instead?
               </div>
             )}
-            <input className="signup-btn" type="submit" value="Create Account" />
+            <input
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/3 my-4 mx-auto cursor-pointer"
+              type="submit"
+              value="Create Account"
+            />
           </form>
-          <div className="already-account-wrapper">
+          <div className="mt-4">
             <p>Already have an account?</p>
             <Link to={'/login'}>
-              <button className="signup-login-btn">Log In</button>
+              <button className="mb-8 mt-4 border border-black py-2 px-4">Log In</button>
             </Link>
           </div>
         </div>

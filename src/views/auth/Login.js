@@ -60,14 +60,14 @@ class Login extends Component {
     const { error } = this.props;
     return (
       <div className="absolute mt-24 w-screen text-center">
-        <div className="w-5/6 my-0 mx-auto border border-gray-400">
+        <div className="w-5/6 my-6 mx-auto border border-gray-400 rounded">
           <h1 className="text-2xl font-bold text-center my-8">Welcome Back</h1>
           <form className="flex flex-col" onSubmit={this.handleSubmit}>
-            <label className="" htmlFor="email">
+            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="email">
               Your Email
             </label>
             <input
-              className="border border-gray-700 w-2/4 my-0 mx-auto"
+              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
               type="email"
               name="email"
               id="email"
@@ -75,11 +75,11 @@ class Login extends Component {
               onChange={this.handleChange}
             />
             {errors.email && <div className="signup-error">Email field cannot be empty</div>}
-            <label className="" htmlFor="password">
+            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="password">
               Password
             </label>
             <input
-              className="border border-gray-700 w-2/4 my-0 mx-auto"
+              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
               type="password"
               name="password"
               id="password"
@@ -88,12 +88,16 @@ class Login extends Component {
             />
             {errors.password && <div className="">Password cannot be empty</div>}
             {error && <div className="">{error}</div>}
-            <input className="" type="submit" value="Log In" />
+            <input
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/3 my-4 mx-auto cursor-pointer"
+              type="submit"
+              value="Log In"
+            />
           </form>
-          <div className="">
+          <div className="mt-4">
             <p>Don&apos;t have an account?</p>
             <Link to={'/signup'}>
-              <button className="">Sign Up</button>
+              <button className="mb-8 mt-4 border border-black py-2 px-4">Sign Up</button>
             </Link>
           </div>
         </div>

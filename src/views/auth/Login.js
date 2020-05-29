@@ -59,48 +59,58 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="absolute mt-24 w-screen text-center">
-        <div className="w-5/6 my-6 mx-auto border border-gray-400 rounded">
+      <div className="absolute mt-20 w-screen text-center bg-gray-200">
+        <div className="w-5/6 my-8 bg-white shadow-md rounded px-8 pt-6 pb-8 my-0 mx-auto">
           <h1 className="text-2xl font-bold text-center my-8">Welcome Back</h1>
           <form className="flex flex-col" onSubmit={this.handleSubmit}>
-            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="email">
+            <label className="block text-gray-700 font-bold mb-2 text-left w-2/3 my-0 mx-auto" htmlFor="email">
               Your Email
             </label>
             <input
-              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
+              className="shadow appearance-none border rounded my-0 mx-auto w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               name="email"
               id="email"
+              placeholder="Email"
               value={email}
               onChange={this.handleChange}
             />
             {errors.email && <div className="signup-error">Email field cannot be empty</div>}
-            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="password">
+            <label className="block text-gray-700 font-bold mb-2 text-left w-2/3 mt-2 mx-auto" htmlFor="password">
               Password
             </label>
             <input
-              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
+              className="shadow appearance-none border rounded my-0 mx-auto w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               name="password"
               id="password"
+              placeholder="********"
               value={password}
               onChange={this.handleChange}
             />
             {errors.password && <div className="">Password cannot be empty</div>}
             {error && <div className="">{error}</div>}
-            <input
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/3 my-4 mx-auto cursor-pointer"
-              type="submit"
-              value="Log In"
-            />
+            <div className="mx-auto w-2/3 justify-between flex items-center my-8">
+              <input
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline cursor-pointer"
+                type="submit"
+                value="Sign In"
+              />
+              <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                Forgot Password?
+              </Link>
+            </div>
           </form>
           <div className="mt-4">
-            <p>Don&apos;t have an account?</p>
+            <p className="font-bold text-sm">Don&apos;t have an account?</p>
             <Link to={'/signup'}>
-              <button className="mb-8 mt-4 border border-black py-2 px-4">Sign Up</button>
+              <button className="mt-4 bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-500 rounded shadow">
+                Sign Up
+              </button>
             </Link>
           </div>
         </div>
+        <p className="text-center text-gray-500 text-xs mb-20">&copy;2020 Seemy. All rights reserved.</p>
       </div>
     );
   }

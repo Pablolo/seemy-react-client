@@ -85,7 +85,9 @@ class Signup extends Component {
                   noValidate
                   required
                 />
-                {errors.firstName.length > 0 && <span className="">{errors.firstName}</span>}
+                {errors.firstName.length > 0 && (
+                  <span className="text-red-500 text-sm italic w-4/5 text-left mx-auto">{errors.firstName}</span>
+                )}
               </div>
               <div className="flex flex-col w-2/4">
                 <label className="block text-gray-700 font-bold mb-2 text-left w-full my-0 mx-auto" htmlFor="lastName">
@@ -102,10 +104,12 @@ class Signup extends Component {
                   noValidate
                   required
                 />
-                {errors.lastName.length > 0 && <span className="">{errors.lastName}</span>}
+                {errors.lastName.length > 0 && (
+                  <span className="text-red-500 text-sm italic w-4/5 text-left mx-auto">{errors.lastName}</span>
+                )}
               </div>
             </div>
-            <p className="text-xs mb-2">Enter your name as it appears on your drivers license</p>
+            <p className="text-xs mb-2 mr-12">Enter your name as it appears on your drivers license</p>
             <label className="block text-gray-700 font-bold mb-2 text-left w-11/12 my-0 mx-auto" htmlFor="email">
               Email
             </label>
@@ -120,8 +124,12 @@ class Signup extends Component {
               noValidate
               required
             />
-            {errors.email.length > 0 && <span className="">{errors.email}</span>}
-            {errors.email.length === 0 && email !== '' && <span className="">Your Email is correct</span>}
+            {errors.email.length > 0 && (
+              <span className="text-red-500 text-sm italic w-11/12 text-left">{errors.email}</span>
+            )}
+            {errors.email.length === 0 && email !== '' && (
+              <span className="text-green-500 text-sm italic w-11/12 text-left">Your Email is correct</span>
+            )}
             <label className="block text-gray-700 font-bold mb-2 text-left w-11/12 my-0 mx-auto" htmlFor="password">
               Password
             </label>
@@ -137,8 +145,12 @@ class Signup extends Component {
               noValidate
               required
             />
-            {errors.password.length > 0 && <span className="">{errors.password}</span>}
-            {errors.password.length === 0 && password !== '' && <span className="">Your Password is correct</span>}
+            {errors.password.length > 0 && (
+              <span className="text-red-500 text-sm italic w-4/5 text-left w-11/12">{errors.password}</span>
+            )}
+            {errors.password.length === 0 && password !== '' && (
+              <span className="text-green-500 text-sm italic w-11/12 text-left">Your Password is correct</span>
+            )}
             <p className="text-sm text-gray-700 mt-4">*All fields are required</p>
             {error && (
               <div>

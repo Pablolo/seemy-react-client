@@ -62,7 +62,7 @@ class Login extends Component {
       <div className="absolute mt-20 w-screen text-center bg-gray-200">
         <div className="w-5/6 my-8 bg-white shadow-md rounded px-8 pt-6 pb-8 my-0 mx-auto">
           <h1 className="text-2xl font-bold text-center my-8">Welcome Back</h1>
-          <form className="flex flex-col" onSubmit={this.handleSubmit}>
+          <form className="flex flex-col text-center" onSubmit={this.handleSubmit}>
             <label className="block text-gray-700 font-bold mb-2 text-left w-4/5 my-0 mx-auto" htmlFor="email">
               Your Email
             </label>
@@ -75,7 +75,9 @@ class Login extends Component {
               value={email}
               onChange={this.handleChange}
             />
-            {errors.email && <div className="signup-error">Email field cannot be empty</div>}
+            {errors.email && (
+              <div className="text-red-500 text-sm italic w-4/5 text-left mx-auto">Email field cannot be empty</div>
+            )}
             <label className="block text-gray-700 font-bold mb-2 text-left w-4/5 mt-2 mx-auto" htmlFor="password">
               Password
             </label>
@@ -88,8 +90,12 @@ class Login extends Component {
               value={password}
               onChange={this.handleChange}
             />
-            {errors.password && <div className="">Password cannot be empty</div>}
-            {error && <div className="">{error}</div>}
+            {errors.password && (
+              <div className="text-red-500 text-sm italic w-4/5 text-left mx-auto">Password cannot be empty</div>
+            )}
+            {!errors.password && !errors.email && error && (
+              <div className="text-red-500 text-sm italic mt-3">{error}</div>
+            )}
             <div className="mx-auto w-4/5 justify-between flex items-center my-8">
               <input
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline cursor-pointer"

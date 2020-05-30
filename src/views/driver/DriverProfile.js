@@ -74,7 +74,9 @@ class DriverProfile extends Component {
             <LeanCarDetail car={car} />
             {match && (
               <Link to={`/cars/${car._id}/update`}>
-                <button className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded w-1/2 cursor-pointer">Update Car Details</button>
+                <button className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded w-1/2 cursor-pointer">
+                  Update Car Details
+                </button>
               </Link>
             )}
           </div>
@@ -103,7 +105,7 @@ class DriverProfile extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div className="absolute mt-24">
+          <div className="absolute mt-24 text-center">
             <div className="bg-gray-100 w-5/6 my-6 mx-auto border border-gray-400 rounded text-center">
               <img
                 className="h-auto w-2/5 rounded-full mx-auto mt-6"
@@ -125,7 +127,9 @@ class DriverProfile extends Component {
             </div>
             {match && !cars && (
               <Link to={'/cars/add'}>
-                <button>List Your Car</button>
+                <button className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mt-4 mb-8 cursor-pointer">
+                  List Your Car
+                </button>
               </Link>
             )}
             {match && cars && (
@@ -143,6 +147,13 @@ class DriverProfile extends Component {
               </div>
             )}
             <div>{this.showUserCars()}</div>
+            {match && cars && (
+              <Link to={'/cars/add'}>
+                <button className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mt-4 mb-8 cursor-pointer">
+                  List Another Car
+                </button>
+              </Link>
+            )}
           </div>
         );
       case STATUS.ERROR:

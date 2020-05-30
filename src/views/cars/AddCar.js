@@ -89,7 +89,10 @@ class AddCar extends Component {
     return (
       <div className="absolute mt-24 w-full">
         <h1 className="text-2xl font-bold text-center my-8">List your Car</h1>
-        <form className="w-11/12 bg-gray-100 my-6 mx-auto border border-gray-400 rounded text-center" onSubmit={this.handleSubmit}>
+        <form
+          className="w-11/12 bg-gray-100 my-6 mx-auto border border-gray-400 rounded text-center"
+          onSubmit={this.handleSubmit}
+        >
           <h2 className="text-xl font-bold text-left mt-8 mb-4 ml-4">Where is your car located?</h2>
           <div className="flex flex-col">
             <label className="w-4/5 my-0 mx-auto text-left" htmlFor="streetAdress">

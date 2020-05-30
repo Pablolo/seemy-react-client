@@ -1,5 +1,14 @@
-@import "tailwindcss/base";
+@tailwind base;
 
-@import "tailwindcss/components";
+@tailwind components;
 
-@import "tailwindcss/utilities";
+.btn-red {
+  @apply bg-red-500 text-white font-bold py-2 px-4 rounded;
+}
+
+.btn-custom {
+  @apply bg-gray-500 text-white font-bold py-2 px-4 rounded;
+}
+
+
+@tailwind utilities;

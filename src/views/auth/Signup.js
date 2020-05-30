@@ -65,20 +65,21 @@ class Signup extends Component {
     const { firstName, lastName, email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="absolute mt-24 w-screen text-center">
-        <div className="w-5/6 my-6 mx-auto border border-gray-400 rounded">
+      <div className="absolute mt-20 w-screen text-center bg-gray-200">
+        <div className="w-5/6 my-8 bg-white shadow-md mx-auto rounded px-8 pt-6 pb-8">
           <h1 className="text-2xl font-bold text-center my-8">Let&apos;s get Started</h1>
           <form className="flex flex-col items-center" onSubmit={this.handleSubmit}>
-            <div className="flex flex-row w-2/3">
+            <div className="flex flex-row w-11/12">
               <div className="flex flex-col w-2/4">
-                <label className="w-full my-0 mx-auto text-left" htmlFor="firstName">
+                <label className="block text-gray-700 font-bold mb-2 text-left w-full my-0 mx-auto" htmlFor="firstName">
                   First Name
                 </label>
                 <input
-                  className="border border-gray-700 w-11/12 rounded-sm"
+                  className="shadow appearance-none border rounded my-0 w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   name="firstName"
                   id="firstName"
+                  placeholder="Name"
                   value={firstName}
                   onChange={this.handleChange}
                   noValidate
@@ -87,14 +88,15 @@ class Signup extends Component {
                 {errors.firstName.length > 0 && <span className="">{errors.firstName}</span>}
               </div>
               <div className="flex flex-col w-2/4">
-                <label className="w-full my-0 mx-auto text-left" htmlFor="lastName">
+                <label className="block text-gray-700 font-bold mb-2 text-left w-full my-0 mx-auto" htmlFor="lastName">
                   Last Name
                 </label>
                 <input
-                  className="border border-gray-700 w-full rounded-sm"
+                  className="shadow appearance-none border rounded my-0 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   name="lastName"
                   id="lastName"
+                  placeholder="LastName"
                   value={lastName}
                   onChange={this.handleChange}
                   noValidate
@@ -104,14 +106,15 @@ class Signup extends Component {
               </div>
             </div>
             <p className="text-xs mb-2">Enter your name as it appears on your drivers license</p>
-            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="email">
+            <label className="block text-gray-700 font-bold mb-2 text-left w-11/12 my-0 mx-auto" htmlFor="email">
               Email
             </label>
             <input
-              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
+              className="shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               name="email"
               id="email"
+              placeholder="Email"
               value={email}
               onChange={this.handleChange}
               noValidate
@@ -119,14 +122,15 @@ class Signup extends Component {
             />
             {errors.email.length > 0 && <span className="">{errors.email}</span>}
             {errors.email.length === 0 && email !== '' && <span className="">Your Email is correct</span>}
-            <label className="w-2/3 my-0 mx-auto text-left" htmlFor="password">
+            <label className="block text-gray-700 font-bold mb-2 text-left w-11/12 my-0 mx-auto" htmlFor="password">
               Password
             </label>
             <input
-              className="border border-gray-700 w-2/3 my-0 mx-auto rounded-sm"
+              className="shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               name="password"
               id="password"
+              placeholder="********"
               value={password}
               onChange={this.handleChange}
               minLength="8"
@@ -142,18 +146,21 @@ class Signup extends Component {
               </div>
             )}
             <input
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-2/3 my-4 mx-auto cursor-pointer"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-11/12 my-4 mx-auto cursor-pointer"
               type="submit"
               value="Create Account"
             />
           </form>
           <div className="mt-4">
-            <p>Already have an account?</p>
+            <p className="font-bold text-sm">Already have an account?</p>
             <Link to={'/login'}>
-              <button className="mb-8 mt-4 border border-black py-2 px-4">Log In</button>
+              <button className="mt-4 bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-500 rounded shadow">
+                Log In
+              </button>
             </Link>
           </div>
         </div>
+        <p className="text-center text-gray-500 text-xs mb-20">&copy;2020 Seemy. All rights reserved.</p>
       </div>
     );
   }

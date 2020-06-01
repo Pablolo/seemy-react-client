@@ -28,9 +28,13 @@ class Navbar extends Component {
     const { showMenu } = this.state;
     return (
       <div className="fixed z-40">
-        <nav className="w-screen px-8 py-4 flex justify-between bg-white shadow-lg">
-          <NavLink to="/" className="font-bold text-3xl">
-            seemy
+        <nav className="w-screen pl-4 pr-8 py-4 flex justify-between bg-white shadow-lg">
+          <NavLink to="/">
+            <img
+              className="h-10 mt-2"
+              src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/seemy-logo-one.png`}
+              alt="seemy-logo"
+            />
           </NavLink>
           <img
             className="h-8 w-auto cursor-pointer mt-2 relative"

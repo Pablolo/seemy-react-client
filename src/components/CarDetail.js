@@ -21,7 +21,7 @@ class CarDetails extends Component {
         <p className="mt-2 mb-8 mx-auto font-bold text-3xl ml-6">
           {car.make} {car.model}
         </p>
-        <div className="border border-black mx-6 flex justify-between py-4 px-8">
+        <div className="border border-black mx-6 flex justify-between py-4 px-8 rounded">
           <p className="font-bold">Year {car.year}</p>
           <p className="font-bold">{this.transmissionUpperCase()} Transmission</p>
         </div>
@@ -37,7 +37,7 @@ class CarDetails extends Component {
           <p className="ml-8 font-bold text-lg py-4">Pablo Olóndriz</p>
         </Link>
         <p className="mx-auto text-lg font-bold ml-6 mb-4">Description</p>
-        <p className="border border-black mx-6 flex justify-between py-4 px-8 mb-12">{car.description}</p>
+        <p className="border border-black mx-6 flex justify-between py-4 px-8 mb-12 rounded">{car.description}</p>
       </div>
     );
   }

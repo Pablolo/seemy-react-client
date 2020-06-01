@@ -59,18 +59,18 @@ class Homepage extends Component {
               style={{ backgroundImage: `url(${process.env.REACT_APP_BACKEND_URI}/images/misc/homepage-3.jpg)` }}
             >
               <div>
-                <h1 className="text-5xl font-bold text-center mt-12 pt-12 px-12 text-white">
+                <h1 className="text-5xl font-bold text-center mt-12 pt-16 px-12 text-white">
                   <span className="bg-black">RENT YOUR DREAM CAR</span>
                 </h1>
                 <h3 className="font-bold text-center mt-4 text-white">Book unforgettable cars from trusted hosts</h3>
               </div>
               <Link to={'/cars/'}>
-                <button className="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded shadow mt-56">
+                <button className="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded shadow mt-64">
                   View Cars in Your Area
                 </button>
               </Link>
             </div>
-            <h2 className="text-xl font-bold text-center my-8">Cars Available Today</h2>
+            <h2 className="text-2xl font-bold text-center my-8">Cars Available Today</h2>
             {this.listCars()}
           </div>
         );

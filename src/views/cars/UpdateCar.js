@@ -336,7 +336,7 @@ class UpdateCar extends Component {
                   }}
                 >
                   Delete Car
-                </button> 
+                </button>
                 <p className="text-center text-gray-700 text-sm mb-20 px-20">
                   Warning! This will permanently delete your car from Seemy
                 </p>

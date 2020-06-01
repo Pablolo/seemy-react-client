@@ -85,11 +85,13 @@ class DriverProfile extends Component {
     }
     if (typeof cars === 'object') {
       return (
-        <div>
+        <div className="bg-gray-100 w-5/6 my-6 mx-auto border border-gray-400 rounded text-center py-6">
           <LeanCarDetail car={cars} />
           {match && (
             <Link to={`/cars/${cars._id}/update`}>
-              <button>Update Car Details</button>
+              <button className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded w-1/2 cursor-pointer">
+                Update Car Details
+              </button>
             </Link>
           )}
         </div>
@@ -105,7 +107,7 @@ class DriverProfile extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div className="absolute mt-24 text-center">
+          <div className="absolute mt-24 text-center w-full">
             <div className="bg-gray-100 w-5/6 my-6 mx-auto border border-gray-400 rounded text-center">
               <img
                 className="h-auto w-2/5 rounded-full mx-auto mt-6"

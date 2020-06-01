@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withAuth } from '../../context/authContext';
 
-// import './Login.css';
-
 class Login extends Component {
   state = {
     email: '',

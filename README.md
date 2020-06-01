@@ -1,5 +1,11 @@
 # Seemy - React Client
 
+## Instructions
+
+You can easily create an account with any email and password or use one of our own, for example: 
+username: noelia@gmail.com 
+pass: 1234
+
 ## Description
 
 Seemy is a platform that puts in contact people who has sports & luxury cars with those who want to rent them for a few days. Think about it as a 'Getaround' app, but only focused on high-end cars.

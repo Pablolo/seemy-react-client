@@ -621,7 +621,7 @@ video {
   border-radius: 0.25rem;
 }
 
-.btn-custom {
+.btn-gray {
   --bg-opacity: 1;
   background-color: #a0aec0;
   background-color: rgba(160, 174, 192, var(--bg-opacity));

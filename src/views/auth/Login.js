@@ -56,6 +56,7 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     const { error } = this.props;
+    const borderRed = 'border-red-500';
     return (
       <div className="absolute mt-20 w-screen text-center bg-gray-300">
         <div className="w-5/6 my-8 bg-white shadow-md rounded px-8 pt-6 pb-8 my-0 mx-auto">
@@ -65,7 +66,8 @@ class Login extends Component {
               Your Email
             </label>
             <input
-              className="shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className={`${errors.email &&
+                'border-red-500'} shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
               type="email"
               name="email"
               id="email"
@@ -80,7 +82,8 @@ class Login extends Component {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className={`${errors.password &&
+                'border-red-500'} shadow appearance-none border rounded my-0 mx-auto w-11/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
               type="password"
               name="password"
               id="password"

@@ -71,9 +71,9 @@ class Cars extends Component {
         return <Loading />;
       case STATUS.LOADED:
         return (
-          <div className="absolute mt-24">
-            <SearchBar searchQuery={this.search} />
-            <h1 className="text-2xl font-bold text-center mt-2 mb-8">Available Supercars</h1>
+          <div className="absolute mt-20 text-center">
+              <SearchBar searchQuery={this.search} />
+            <h1 className="text-2xl font-bold text-center my-8">Available Supercars</h1>
             {this.searchFilterRendering()}
           </div>
         );

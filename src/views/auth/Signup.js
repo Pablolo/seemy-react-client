@@ -65,7 +65,7 @@ class Signup extends Component {
     const { firstName, lastName, email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="absolute mt-20 w-screen text-center bg-gray-200">
+      <div className="absolute mt-20 w-screen text-center bg-gray-300">
         <div className="w-5/6 my-8 bg-white shadow-md mx-auto rounded px-8 pt-6 pb-8">
           <h1 className="text-2xl font-bold text-center my-8">Let&apos;s get Started</h1>
           <form className="flex flex-col items-center" onSubmit={this.handleSubmit}>

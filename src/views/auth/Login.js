@@ -57,7 +57,7 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { error } = this.props;
     return (
-      <div className="absolute mt-20 w-screen text-center bg-gray-200">
+      <div className="absolute mt-20 w-screen text-center bg-gray-300">
         <div className="w-5/6 my-8 bg-white shadow-md rounded px-8 pt-6 pb-8 my-0 mx-auto">
           <h1 className="text-2xl font-bold text-center my-8">Welcome Back</h1>
           <form className="flex flex-col text-center" onSubmit={this.handleSubmit}>

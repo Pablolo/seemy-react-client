@@ -62,11 +62,11 @@ class CarDetails extends Component {
             <p className="mt-2 mb-8 mx-auto font-bold text-3xl ml-6">
               {car.make} {car.model}
             </p>
-            <div className="border border-black mx-6 flex justify-between py-4 px-8 rounded">
+            <div className="bg-gray-300 mx-6 flex justify-between py-4 px-8 rounded">
               <p className="font-bold">Year {car.year}</p>
               <p className="font-bold">{this.transmissionUpperCase()} Transmission</p>
             </div>
-            <div className="text-center border border-black mx-6 my-8 flex-col justify-between py-4 px-8">
+            <div className="rounded bg-gray-200 text-center border-2 border-black mx-6 my-8 flex-col justify-between py-4 px-8">
               <p className="text-2xl text-left ml-2">
                 <b className="font-extrabold text-3xl">{car.dailyPrice}€</b>/day
               </p>
@@ -84,7 +84,7 @@ class CarDetails extends Component {
               </p>
             </Link>
             <p className="mx-auto text-lg font-bold ml-6 mb-4">Description</p>
-            <p className="border border-black mx-6 flex justify-between py-4 px-8 mb-12 rounded">{car.description}</p>
+            <p className="bg-gray-300 mx-6 flex justify-between py-4 px-8 mb-12 rounded">{car.description}</p>
           </div>
         );
       case STATUS.ERROR:

@@ -44,13 +44,15 @@ class Navbar extends Component {
           />
         </nav>
         {showMenu && (
-          <ul className="bg-white rounded-sm shadow-2xl z-40 absolute right-0 mr-1">
+          <ul className="bg-white rounded-sm shadow-2xl z-40 absolute right-0">
             {!isLoggedIn && <NavBarLink to={'/signup'} name={'Sign Up'} />}
             {!isLoggedIn && <NavBarLink to={'/login'} name={'Log In'} addcss={'border-b-2'} />}
-            {isLoggedIn && <NavBarLink to={`/driver/${user._id}`} name={'Your Profile'} />}
-            <NavBarLink to={'/cars'} name={'Cars'} />
+            {isLoggedIn && (
+              <NavBarLink to={`/driver/${user._id}`} name={'Your Profile'} addcss={'border-t-2 border-b-2'} />
+            )}
+            <NavBarLink to={'/cars'} name={'All Cars'} />
             <NavBarLink to={'/learn-more'} name={'Learn More'} />
-            <li className="px-12 py-3">
+            <li className="px-12 py-3 mb-2">
               <NavLink to={'/cars/add'}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   List Your Car

@@ -119,7 +119,16 @@ class AuthProvider extends Component {
           handleLogout: this.handleLogout,
         }}
       >
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div className="mt-24 mx-auto w-screen text-center">
+            <p className="font-bold text-3xl text-gray-700">Loading Seemy...</p>
+            <img
+              className="w-24 my-2 mx-auto"
+              src={`${process.env.REACT_APP_BACKEND_URI}/images/misc/seemy-s.png`}
+              alt="seemy-s-logo"
+            />
+          </div>
+        )}
         {!isLoading && children}
       </AuthContext.Provider>
     );

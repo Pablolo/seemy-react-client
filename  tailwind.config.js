@@ -1,6 +1,8 @@
 module.exports = {
   theme: {
-    extend: {},
+    fontFamily: {
+      header: ['Georgia'],
+    },
   },
   variants: {},
   plugins: [],

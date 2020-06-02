@@ -6,7 +6,7 @@ class LeanCarDetail extends Component {
   render() {
     const { car } = this.props;
     return (
-      <div className="flex bg-white border border-4 bg-gray-200 rounded-md w-11/12 my-0 mx-auto mb-6">
+      <div className="flex border border-4 bg-gray-900 rounded w-11/12 my-0 mx-auto mb-6">
         <Link to={`/cars/${car._id}`}>
           <div className="relative">
             <img className="mx-auto rounded" src={process.env.REACT_APP_BACKEND_URI + car.image} alt={car.make} />
@@ -14,7 +14,7 @@ class LeanCarDetail extends Component {
               <b>{car.dailyPrice}€</b>/day
             </p>
           </div>
-          <p className="mt-4 mb-4 mx-auto font-bold text-2xl ml-6 text-left">
+          <p className="mt-4 mb-4 mx-auto text-white font-bold text-2xl ml-6 text-left">
             {car.make} {car.model} {car.year}
           </p>
         </Link>

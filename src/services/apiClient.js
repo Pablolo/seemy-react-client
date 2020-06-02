@@ -25,19 +25,19 @@ class ApiClient {
   }
 
   getProtected() {
-    return this.apiClient.get("/protected");
+    return this.apiClient.get('/protected');
   }
 
   cars() {
     return this.apiClient.get('/cars');
   }
-  
+
   uniqueCar(id) {
     return this.apiClient.get(`/cars/${id}`);
   }
 
   addCar(body) {
-    return this.apiClient.post('/cars', body)
+    return this.apiClient.post('/cars', body);
   }
 
   getUserCars(id) {
@@ -45,7 +45,7 @@ class ApiClient {
   }
 
   updateCar(id, body) {
-    return this.apiClient.put(`/cars/${id}`, body)
+    return this.apiClient.put(`/cars/${id}`, body);
   }
 
   deleteCar(id) {
